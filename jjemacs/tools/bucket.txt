@@ -1,0 +1,8 @@
+
+;; Emacs:
+;; Local Variables:
+;; enable-local-eval: t
+;; frame-title-format: ("%b  (" user-login-name "@" hostname ")    [" emacs-version "]  BLA")
+;; End:
+
+;; eval: (setq-local frame-title-format '("TEST %b  (" user-login-name "@" hostname ")"))

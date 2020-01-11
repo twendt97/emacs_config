@@ -1,0 +1,87 @@
+########################################################################
+##  INFO  INFO  INFO  INFO  INFO  INFO  INFO  INFO  INFO  INFO  INFO  ##
+########################################################################
+
+PACKAGE:    mupad-mode.el
+CONTENTS:   A MuPAD code editing mode for emacs
+MAINTAINER: Jürgen Billing <bij@mupad.de>
+INSTALLED:  03.03.1999
+
+
+Purpose of this package
+-----------------------
+
+- indentation (correlated to the 2 dimensional output of MuPAD)
+  (RET, TAB, region: CTRL-META-\)
+- colored highlighting of syntactical structures
+  (not yet `/* */' commentaries)
+- closing of unclosed statements (like if, proc, while ...)
+  (CTRL-c CTRL-e as in latex-mode)
+- put the closed brace together when type any open brace
+  (not if following char has word syntax), also for double quote
+- `comment-region' (put `//' in front of each line in region)
+  (uncomment-region will be follow)
+- indent region without break indentation
+  (CTRL->) and back (CTRL-<)
+
+- completions of MuPAD objects (like elisp-mode)
+  (META-TAB, ESC-TAB)
+  > completion of all known MuPAD objects
+  > reads the file 'mupad-cpl.el' that can be changed for own
+    objects
+  > (exportable) library methods can be completed by writing the
+    library name followed by one (or two) colon(s)
+
+
+Changes to last versions
+------------------------
+
+- coloring also for X-Emacs
+- completions [03.03.1999]
+  !!! The file 'mupad-cpl.el' will be required. !!!
+
+Installation
+------------
+
+The mode file must be detectable in Emacs path
+(e. g. ~/.elisp/ contains mupad-mode.el):
+
+(setq load-path (append
+                 (list
+                  (expand-file-name "~/.elisp"))
+                 load-path))
+
+
+To load this mode automatically you have to extend the `.emacs'
+(or any configuration) file with
+
+('require mupad-mode)
+(setq auto-mode-alist
+      (append '(("\\.mu$" . mupad-mode)      ; to edit MuPAD-Libraries
+                ("\\.mupad.*$" . mupad-mode) ; mupad[sys]init)
+              auto-mode-alist))
+
+Otherwise the call
+
+M-x mupad-mode
+
+after loading any MuPAD file will be necessary.
+(So any buffer can be edited in 'mupad-mode'.)
+
+
+Known bugs
+----------
+
+This version will be developed every day.
+
+Indentation takes not care of keywords in comments and also names like
+keywords (no case sensitivity - that's also while colorizing).
+'/* */' comments cannot be colorized correctly.
+'/* */' comments will not be detected syntactically only in XEmacs (!?).
+
+########################################################################
+########################################################################
+
+
+
+

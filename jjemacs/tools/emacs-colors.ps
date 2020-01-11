@@ -1,0 +1,5160 @@
+%!PS-Adobe-3.0
+%%Title: *Colors*
+%%Creator: Joerg Arndt (using ps-print v6.5.5)
+%%CreationDate: 16:08:49 Nov 25 2002
+%%Orientation: Portrait
+%%DocumentNeededResources: font Times-Roman Times-Italic
+%%+ font Courier
+%%+ font Courier-Bold
+%%+ font Courier-Oblique
+%%+ font Courier-BoldOblique
+%%+ font Helvetica
+%%+ font Helvetica-Bold
+%%DocumentMedia: Letter 612 792 0 () ()
+%%PageOrder: Ascend
+%%Pages: (atend)
+%%Requirements:
+%%EndComments
+%%BeginDefaults
+%%PageMedia: Letter
+%%EndDefaults
+
+%%BeginProlog
+
+/languagelevel where{pop}{/languagelevel 1 def}ifelse
+/ErrorMessage  1 def
+
+% === BEGIN ps-print prologue 0
+% version: 6.0
+
+% Copyright (C) 2000, 2001  Free Software Foundation, Inc.
+%
+% This file is part of GNU Emacs.
+%
+% GNU Emacs is free software; you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation; either version 2, or (at your option)
+% any later version.
+%
+% GNU Emacs is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+%
+% You should have received a copy of the GNU General Public License
+% along with GNU Emacs; see the file COPYING.  If not, write to the
+% Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+% Boston, MA 02111-1307, USA.
+
+%%BeginProcSet: ErrorHandler
+% Downloaded Error Break-page handler
+% Adapted from:
+%     PostScript Language Program Design,
+%     Adobe Systems Incorporated.
+%     Appendix A, pages 217-219
+
+/ps$brkpage where{pop}
+{
+ /ps$brkpage 64 dict def
+ ps$brkpage begin
+  /tx 0 def/ty 0 def/toy 0 def/tox 0 def
+  /prnt{
+   dup type/stringtype ne{=string cvs}if
+   dup length 6 mul
+   /tx exch def/ty 10 def
+   currentpoint/toy exch def/tox exch def
+   1 setgray newpath
+   tox toy 2 sub moveto
+   0 ty rlineto tx 0 rlineto
+   0 ty neg rlineto
+   closepath fill
+   tox toy moveto 0 setgray show
+  }bind def
+  /nl{currentpoint exch pop lmargin exch moveto 0 -10 rmoveto}def
+  /=={/cp 0 def typeprint nl}def
+  /typeprint{dup type dup currentdict exch known{exec}{unknowntype}ifelse}readonly def
+  /lmargin 72 def
+  /rmargin 72 def
+  /tprint{
+   dup length cp add rmargin gt{nl/cp 0 def}if
+   dup length cp add/cp exch def
+   prnt
+  }readonly def
+  /cvsprint{=string cvs tprint( )tprint}readonly def
+  /unknowntype{exch pop cvlit(??)tprint cvsprint}readonly def
+  /integertype{cvsprint}readonly def
+  /realtype{cvsprint}readonly def
+  /booleantype{cvsprint}readonly def
+  /operatortype{(//)tprint cvsprint}readonly def
+  /marktype{pop(-mark-)tprint}readonly def
+  /dicttype{pop(-dictionary-)tprint}readonly def
+  /nulltype{pop(-null-)tprint}readonly def
+  /filetype{pop(-filestream-)tprint}readonly def
+  /savetype{pop(-savelevel-)tprint}readonly def
+  /fonttype{pop(-fontid-)tprint}readonly def
+  /nametype{dup xcheck not{(/)tprint}if cvsprint}readonly def
+  /stringtype{
+   dup rcheck
+   {(\()tprint tprint(\))tprint}
+   {pop(-string-)tprint}ifelse}readonly def
+  /arraytype{
+   dup rcheck
+   {dup xcheck
+    {({)tprint{typeprint}forall(})tprint}
+    {([)tprint{typeprint}forall(])tprint}ifelse}
+   {pop(-array-)tprint}ifelse}readonly def
+  /packedarraytype{
+   dup rcheck
+   {dup xcheck
+    {({)tprint{typeprint}forall(})tprint}
+    {([)tprint{typeprint}forall(])tprint}ifelse}
+   {pop(-packedarray-)tprint}ifelse}readonly def
+  /courier/Courier findfont 10 scalefont def
+  /OLDhandleerror errordict/handleerror get def
+ end %ps$brkpage
+
+ /handleerror{
+  systemdict begin $error begin ps$brkpage begin
+  newerror
+  {/newerror false store vmstatus pop pop 0 ne{grestoreall}if
+   initgraphics
+   ErrorMessage 1 and 0 ne{ % print on paper
+    courier setfont lmargin 720 moveto
+    (# ERROR: )prnt errorname prnt nl
+    (# OFFENDING COMMAND: )prnt/command load prnt
+    $error/ostack known
+    {nl nl(# STACK:)prnt nl nl $error/ostack get aload length{==}repeat}if
+    $error/errorinfo known
+    {nl nl(# ERRORINFO:)prnt nl nl $error/errorinfo get aload length{==}repeat}if
+    systemdict/showpage get exec}if
+   ErrorMessage 2 and 0 ne{ % send back to printing system
+    (\%\%[ Error: )print errorname =print
+    (; OffendingCommand: )print/command load =print
+    $error/errorinfo known
+    {(; ErrorInfo:)print $error/errorinfo get aload length{( )=print =print}repeat}if
+    ( ]\%\%)= flush
+    (\%\%[ Rest of job is ignored ]\%\%)= flush}if
+   /newerror true store}if
+  end end end
+  stop
+ } % handleerror
+ dup 0 systemdict put % replace name by actual dict object
+ dup 4 ps$brkpage put % replace name by dict object
+ bind readonly
+
+ errordict 3 1 roll put % put proc in errordict as /handleerror
+}ifelse
+%%EndProcSet
+
+
+% operators for language level 2 only
+
+(<<)cvn where			% << operator
+{pop/BMark(<<)cvn load def}
+{/BMark{mark}bind def}ifelse
+(>>)cvn where			% >> operator
+{pop/EMark(>>)cvn load def}
+{/EMark{counttomark 2 idiv dup dict begin{def}repeat pop currentdict end}bind def}ifelse
+/setpagedevice where		% setpagedevice
+{pop}
+{/setpagedevice{pop}bind def}ifelse
+/packedarray where		% packedarray
+{pop}
+{/packedarray{array astore readonly}bind def}ifelse
+
+
+% device dependent operators
+
+/DefOp{
+ dup where{pop pop pop}
+ {exch dup where{pop}{pop/pop}ifelse load def}ifelse}def
+
+/duplexmode/setduplexmode DefOp
+/tumble/settumble DefOp
+
+% === END ps-print prologue 0
+
+%%BeginProcSet: UserDefinedPrologue
+
+
+%%EndProcSet
+
+/LandscapeMode       false def
+/UpsideDown          false def
+/NumberOfColumns     1 def
+/LandscapePageHeight 792.0 def
+/PrintPageWidth      498.6141732283465 def
+/PrintWidth   498.6141732283465 def
+/PrintHeight  643.7029732283465 def
+/LeftMargin   56.69291338582677 def
+/RightMargin  56.69291338582677 def
+/InterColumn  56.69291338582677 def
+/BottomMargin 42.51968503937008 def
+/TopMargin    42.51968503937008 def
+/HeaderOffset 28.346456692913385 def
+/HeaderPad    2.4276 def
+/FooterOffset 28.346456692913385 def
+/FooterPad    0 def
+/FooterLines  2 def
+/ShowNofN           true def
+/SwitchHeader       false def
+/PrintOnlyOneHeader false def
+/PrintHeader        true def
+/PrintHeaderFrame   true def
+/HeaderFrameProperties [0.000 0.900 0.400 0.000 0.000 ]def
+/PrintFooter        false def
+/PrintFooterFrame   true def
+/FooterFrameProperties [0.000 0.900 0.400 0.000 0.000 ]def
+/LineSpacing      0 def
+/ParagraphSpacing 0 def
+/LineHeight       8.967500000000001 def
+/LinesPerColumn   72 def
+/WarnPaperSize    true def
+/Zebra            false def
+/PrintLineNumber  false def
+/SyncLineZebra    false def
+/ZebraFollow      0 def
+/PrintLineStep    1 def
+/PrintLineStart   1 def
+/LineNumberColor  [0.000 0.000 0.000] def
+/ZebraHeight      3 def
+/ZebraColor       0.950 def
+/BackgroundColor  [1.000 1.000 1.000] def
+/UseSetpagedevice false def
+
+/PageWidth PrintPageWidth LeftMargin add RightMargin add def
+
+/N-Up           1 def
+/N-Up-Landscape false def
+/N-Up-Border    true def
+/N-Up-Lines     1 def
+/N-Up-Columns   1 def
+/N-Up-Missing   0 def
+/N-Up-Margin    28.346456692913385 def
+/N-Up-Repeat    N-Up-Lines def
+/N-Up-End       N-Up-Columns def
+/N-Up-XColumn   PageWidth def
+/N-Up-YColumn   0 def
+/N-Up-XLine     N-Up-End 1 sub PageWidth mul neg def
+/N-Up-YLine     LandscapePageHeight neg def
+/N-Up-XStart    0 def
+/N-Up-YStart    0 def
+
+% === BEGIN ps-print prologue 1
+% version: 6.0
+
+% Copyright (C) 2000, 2001  Free Software Foundation, Inc.
+%
+% This file is part of GNU Emacs.
+%
+% GNU Emacs is free software; you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation; either version 2, or (at your option)
+% any later version.
+%
+% GNU Emacs is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+%
+% You should have received a copy of the GNU General Public License
+% along with GNU Emacs; see the file COPYING.  If not, write to the
+% Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+% Boston, MA 02111-1307, USA.
+
+% ISOLatin1Encoding stolen from ps_init.ps in GhostScript 2.6.1.4:
+/ISOLatin1Encoding where{pop}{
+% -- The ISO Latin-1 encoding vector isn't known, so define it.
+% -- The first half is the same as the standard encoding,
+% -- except for minus instead of hyphen at code 055.
+/ISOLatin1Encoding
+StandardEncoding 0 45 getinterval aload pop
+    /minus
+StandardEncoding 46 82 getinterval aload pop
+%*** NOTE: the following are missing in the Adobe documentation,
+%*** but appear in the displayed table:
+%*** macron at 0225, dieresis at 0230, cedilla at 0233, space at 0240.
+% 0200 (128)
+    /.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
+    /.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
+    /dotlessi/grave/acute/circumflex/tilde/macron/breve/dotaccent
+    /dieresis/.notdef/ring/cedilla/.notdef/hungarumlaut/ogonek/caron
+% 0240 (160)
+    /space/exclamdown/cent/sterling
+	/currency/yen/brokenbar/section
+    /dieresis/copyright/ordfeminine/guillemotleft
+	/logicalnot/hyphen/registered/macron
+    /degree/plusminus/twosuperior/threesuperior
+	/acute/mu/paragraph/periodcentered
+    /cedilla/onesuperior/ordmasculine/guillemotright
+	/onequarter/onehalf/threequarters/questiondown
+% 0300 (192)
+    /Agrave/Aacute/Acircumflex/Atilde
+	/Adieresis/Aring/AE/Ccedilla
+    /Egrave/Eacute/Ecircumflex/Edieresis
+	/Igrave/Iacute/Icircumflex/Idieresis
+    /Eth/Ntilde/Ograve/Oacute
+	/Ocircumflex/Otilde/Odieresis/multiply
+    /Oslash/Ugrave/Uacute/Ucircumflex
+	/Udieresis/Yacute/Thorn/germandbls
+% 0340 (224)
+    /agrave/aacute/acircumflex/atilde
+	/adieresis/aring/ae/ccedilla
+    /egrave/eacute/ecircumflex/edieresis
+	/igrave/iacute/icircumflex/idieresis
+    /eth/ntilde/ograve/oacute
+	/ocircumflex/otilde/odieresis/divide
+    /oslash/ugrave/uacute/ucircumflex
+	/udieresis/yacute/thorn/ydieresis
+256 packedarray def
+}ifelse
+
+/reencodeFontISO{ %def
+  dup
+  length 12 add dict	% Make a new font (a new dict the same size
+			% as the old one) with room for our new symbols.
+
+  begin			% Make the new font the current dictionary.
+
+    % Copy each of the symbols from the old dictionary
+    % to the new one except for the font ID.
+    {1 index/FID ne{def}{pop pop}ifelse}forall
+
+    % Override the encoding with the ISOLatin1 encoding.
+    currentdict/FontType get 0 ne{/Encoding ISOLatin1Encoding def}if
+
+    % Use the font's bounding box to determine the ascent, descent,
+    % and overall height; don't forget that these values have to be
+    % transformed using the font's matrix.
+
+%          ^    (x2 y2)
+%          |       |
+%          |       v
+%          |  +----+ - -
+%          |  |    |   ^
+%          |  |    |   | Ascent (usually > 0)
+%          |  |    |   |
+% (0 0) -> +--+----+-------->
+%             |    |   |
+%             |    |   v Descent (usually < 0)
+% (x1 y1) --> +----+ - -
+
+    currentdict/FontType get 0 ne
+    {/FontBBox load aload pop			% -- x1 y1 x2 y2
+     FontMatrix transform/Ascent  exch def pop
+     FontMatrix transform/Descent exch def pop}
+    {/PrimaryFont FDepVector 0 get def
+     PrimaryFont/FontBBox get aload pop
+     PrimaryFont/FontMatrix get transform/Ascent exch def pop
+     PrimaryFont/FontMatrix get transform/Descent exch def pop}ifelse
+
+    /FontHeight Ascent Descent sub def	% use `sub' because descent < 0
+
+    % Define these in case they're not in the FontInfo
+    % (also, here they're easier to get to).
+    /UnderlinePosition  Descent 0.70 mul def
+    /OverlinePosition   Descent UnderlinePosition sub Ascent add def
+    /StrikeoutPosition  Ascent 0.30 mul def
+    /LineThickness      FontHeight 0.05 mul def
+    /Xshadow            FontHeight  0.08 mul def
+    /Yshadow            FontHeight -0.09 mul def
+    /SpaceBackground    Descent neg UnderlinePosition add def
+    /XBox               Descent neg def
+    /YBox               LineThickness 0.7 mul def
+
+    currentdict		% Leave the new font on the stack
+    end			% Stop using the font as the current dictionary.
+    definefont		% Put the font into the font dictionary
+    pop			% Discard the returned font.
+}bind def
+
+% Font definition
+/DefFont{findfont exch scalefont reencodeFontISO}def
+
+% Font selection
+/F{
+  findfont
+  dup/Ascent            get/Ascent            exch def
+  dup/Descent           get/Descent           exch def
+  dup/FontHeight        get/FontHeight        exch def
+  dup/UnderlinePosition get/UnderlinePosition exch def
+  dup/OverlinePosition  get/OverlinePosition  exch def
+  dup/StrikeoutPosition get/StrikeoutPosition exch def
+  dup/LineThickness     get/LineThickness     exch def
+  dup/Xshadow           get/Xshadow           exch def
+  dup/Yshadow           get/Yshadow           exch def
+  dup/SpaceBackground   get/SpaceBackground   exch def
+  dup/XBox              get/XBox              exch def
+  dup/YBox              get/YBox              exch def
+  setfont
+}def
+
+/FG/setrgbcolor load def
+
+/bg false def
+/BG{
+  dup/bg exch def
+  {[4 1 roll]}
+  {[1.0 1.0 1.0]}
+  ifelse
+  /bgcolor exch def
+}def
+
+%  B    width    C
+%   +-----------+
+%               | Ascent  (usually > 0)
+% A +           +
+%               | Descent (usually < 0)
+%   +-----------+
+%  E    width    D
+
+/dobackground{				% width --
+  currentpoint				% -- width x y
+  gsave
+    newpath
+    moveto				% A (x y)
+    0 Ascent rmoveto			% B
+    dup 0 rlineto			% C
+    0 Descent Ascent sub rlineto	% D
+    neg 0 rlineto			% E
+    closepath
+    FillBgColor
+  grestore
+}def
+
+/eolbg{					% dobackground until right margin
+  PrintWidth				% -- x-eol
+  currentpoint pop			% -- cur-x
+  sub					% -- width until eol
+  dobackground
+}def
+
+/LineHS LineHeight LineSpacing add def
+/ParagraphHS LineHeight ParagraphSpacing add def
+/PSL{/h exch def bg{eolbg}if  0  currentpoint exch pop h sub  moveto}def
+/PLN{PrintLineNumber{doLineNumber}if}def
+
+/SL{LineHS PSL isLineStep pop}def	% Soft Linefeed
+
+/PHL{ParagraphHS PSL PLN}def		% Paragraph Hard Linefeed
+/LHL{LineHS PSL PLN}def			% Hard Linefeed
+
+% Some debug
+/dcp{currentpoint exch 40 string cvs print(, )print =}def
+/dp{print 2 copy  exch 40 string cvs print(, )print =}def
+
+/W{
+  ( )stringwidth	% Get the width of a space in the current font.
+  pop			% Discard the Y component.
+  mul			% Multiply the width of a space
+			% by the number of spaces to plot
+  bg{dup dobackground}if
+  0 rmoveto
+}def
+
+/Effect          0 def
+/EffectUnderline false def
+/EffectStrikeout false def
+/EffectOverline  false def
+/EffectShadow    false def
+/EffectBox       false def
+/EffectOutline   false def
+
+% effect: 1  - underline  2   - strikeout  4  - overline
+%         8  - shadow     16  - box        32 - outline
+/EF{
+  /Effect exch def
+  /EffectUnderline Effect 1  and 0 ne def
+  /EffectStrikeout Effect 2  and 0 ne def
+  /EffectOverline  Effect 4  and 0 ne def
+  /EffectShadow    Effect 8  and 0 ne def
+  /EffectBox       Effect 16 and 0 ne def
+  /EffectOutline   Effect 32 and 0 ne def
+}def
+
+% stack:  string  |-  --
+/S{
+  /xx currentpoint dup Descent add/yy exch def
+  Ascent add/YY exch def def
+  dup stringwidth pop xx add/XX exch def
+  EffectShadow{
+    /yy yy Yshadow add def
+    /XX XX Xshadow add def
+  }if
+  bg{
+    true
+    EffectBox
+      {SpaceBackground doBox}
+      {xx yy XX YY doRect}
+    ifelse
+  }if						% background
+  EffectBox      {false 0 doBox}if		% box
+  EffectShadow   {dup doShadow}if		% shadow
+  EffectOutline
+    {true doOutline}				% outline
+    {show}					% normal text
+  ifelse
+  EffectUnderline{UnderlinePosition Hline}if	% underline
+  EffectStrikeout{StrikeoutPosition Hline}if	% strikeout
+  EffectOverline {OverlinePosition  Hline}if	% overline
+}bind def
+
+% stack:  position  |-  --
+/Hline{
+  currentpoint exch pop add dup
+  gsave
+  newpath
+  xx exch moveto
+  XX exch lineto
+  closepath
+  LineThickness setlinewidth stroke
+  grestore
+}bind def
+
+% stack:  fill-or-not delta  |-  --
+/doBox{
+  /dd exch def
+  xx XBox sub dd sub yy YBox sub dd sub
+  XX XBox add dd add YY YBox add dd add
+  doRect
+}bind def
+
+% stack:  fill-or-not lower-x lower-y upper-x upper-y  |-  --
+/doRect{
+  /rYY exch def
+  /rXX exch def
+  /ryy exch def
+  /rxx exch def
+  gsave
+  newpath
+  rXX rYY moveto
+  rxx rYY lineto
+  rxx ryy lineto
+  rXX ryy lineto
+  closepath
+  % top of stack: fill-or-not
+  {FillBgColor}
+  {LineThickness setlinewidth stroke}ifelse
+  grestore
+}bind def
+
+% stack:  string  |-  --
+/doShadow{
+  gsave
+  Xshadow Yshadow rmoveto
+  false doOutline
+  grestore
+}bind def
+
+/st 1 string def
+
+% stack:  string fill-or-not  |-  --
+/doOutline{
+  /-fillp- exch def
+  /-ox- currentpoint/-oy- exch def def
+  gsave
+  LineThickness setlinewidth
+  {st 0 3 -1 roll put
+   st dup true charpath
+   -fillp- {gsave FillBgColor grestore}if
+   stroke stringwidth
+   -oy- add/-oy- exch def
+   -ox- add/-ox- exch def
+   -ox- -oy- moveto
+  }forall
+  grestore
+  -ox- -oy- moveto
+}bind def
+
+% stack:  --
+/FillBgColor{bgcolor aload pop setrgbcolor fill}bind def
+
+% stack:  -- |- boolean
+/isLineStep{
+  SyncLineZebra
+  {PLScounter 0 gt						% or zebra
+   {/PLScounter PLScounter 1 sub def PLScounter 0 eq}
+   {false}ifelse
+   PrintLineStep 1 gt
+   {/PrintLineStep PrintLineStep 1 sub def}
+   {/PrintLineStep ZebraHeight def
+    /PLScounter PrintLineStart def}ifelse}
+  {LineNumber PrintLineStart sub PrintLineStep mod 0 eq}ifelse	% or line step
+}def
+
+% stack:  --
+/doLineNumber{
+  /LineNumber where
+  {pop
+   isLineStep			% or line step
+   LineNumber Lines ge or	% or last line
+   {currentfont
+    gsave
+    LineNumberColor SetColor
+    /L0 findfont setfont
+    LineNumber Lines ge
+    {(end      )}
+    {LineNumber 6 string cvs(      )strcat}ifelse
+    dup stringwidth pop neg 0 rmoveto
+    show
+    grestore
+    setfont}if
+    /LineNumber LineNumber 1 add def
+  }if
+}def
+
+% stack: color-specifier |- --
+/SetColor{dup type/realtype eq{setgray}{aload pop setrgbcolor}ifelse}def
+
+% stack: --
+/printZebra{
+  gsave
+  ZebraColor SetColor
+  /double-zebra ZebraHeight ZebraHeight add def
+  /yiter double-zebra LineHS mul neg def
+  /xiter PrintWidth InterColumn add def
+  /zebra-line LinesPrinted def
+  NumberOfColumns{LinesPerColumn doColumnZebra xiter 0 rmoveto}repeat
+  grestore
+}def
+
+% stack:  lines-per-column |- --
+/doColumnZebra{
+  /lpc exch def
+  gsave
+  ZebraFollow 1 and 0 ne{
+    /H ZebraHeight zebra-line ZebraHeight mod sub def
+    /lpc lpc H sub def
+    zebra-line double-zebra mod ZebraHeight lt
+    {H doZebra	% "black" stripe followed by a "white" stripe
+     /lpc lpc ZebraHeight sub def
+     H ZebraHeight add}
+    {H}ifelse	% "white" stripe
+    LineHS mul neg 0 exch rmoveto
+    /zebra-line zebra-line LinesPerColumn add def
+  }if
+  /zspacing 0 def
+  lpc dup double-zebra idiv{ZebraHeight doZebra 0 yiter rmoveto}repeat
+  double-zebra mod dup 0 le{pop}
+  {dup ZebraHeight gt
+   {pop ZebraHeight}
+   {/zspacing LineSpacing def
+    ZebraFollow 2 and 0 ne{pop ZebraHeight}if}ifelse
+   doZebra}ifelse
+  grestore
+}def
+
+% stack:  zebra-height (in lines) |- --
+/doZebra{
+  /zh exch 0.05 sub LineHS mul zspacing sub def
+  gsave
+  0 LineHeight 0.65 mul rmoveto
+  PrintWidth 0 rlineto
+  0 zh neg rlineto
+  PrintWidth neg 0 rlineto
+  0 zh rlineto
+  fill
+  grestore
+}def
+
+% stack: --
+/printBackground{
+  /BackgroundColor where{
+    pop gsave BackgroundColor SetColor
+    NumberOfColumns{
+     gsave
+     0 LineHeight 0.65 mul rmoveto
+     PrintWidth 0 rlineto
+     0 PrintHeight neg rlineto
+     PrintWidth neg 0 rlineto
+     0 PrintHeight rlineto
+     fill
+     grestore
+     PrintWidth InterColumn add 0 rmoveto
+    }repeat
+    grestore
+  }if
+}def
+
+% tx ty rotation xscale yscale xpos ypos BeginBackImage
+/BeginBackImage{
+  /-save-image- save def
+  /showpage{}def
+  translate
+  scale
+  rotate
+  translate
+}def
+
+/EndBackImage{-save-image- restore}def
+
+% string fontsize fontname rotation gray xpos ypos ShowBackText
+/ShowBackText{
+  gsave
+  translate
+  setgray
+  rotate
+  findfont exch dup/-offset- exch -0.25 mul def scalefont setfont
+  0 -offset- moveto
+  /-saveLineThickness- LineThickness def
+  /LineThickness 1 def
+  false doOutline
+  /LineThickness -saveLineThickness- def
+  grestore
+}def
+
+/SetPageSize{
+  BMark/PageSize[PageWidth LandscapePageHeight LandscapeMode{exch}if]EMark setpagedevice
+}def
+
+/BeginDoc{
+  % ---- Remember space width of the normal text font `f0'.
+  /SpaceWidth/f0 findfont setfont( )stringwidth pop def
+  % ---- save the state of the document (useful for ghostscript!)
+  /docState save def
+  % ---- [andrewi] set PageSize based on chosen dimensions
+  UseSetpagedevice{
+   WarnPaperSize{SetPageSize}{mark{SetPageSize}stopped cleartomark}ifelse
+  }if
+  /ColumnWidth PrintWidth InterColumn add def
+  % ---- define where  printing will start
+  /f0 F					% this installs Ascent
+  /PrintStartY PrintHeight Ascent sub def
+  /ColumnIndex 1 def
+  /N-Up-Counter N-Up-End 1 sub def
+  /PLScounter PrintLineStart def
+}def
+
+/EndDoc{
+  % ---- restore the state of the document (useful for ghostscript!)
+  docState restore
+}def
+
+/BeginDSCPage{
+  % ---- when 1st column, save the state of the page
+  ColumnIndex 1 eq{/pageState save def}if
+  % ---- save the state of the column
+  /columnState save def
+}def
+
+/PrintHeaderWidth PrintOnlyOneHeader{PrintPageWidth}{PrintWidth}ifelse def
+
+/BeginPage{
+  /LinesPrinted exch def
+  % ---- when 1st column, print all background effects
+  ColumnIndex 1 eq{
+    0 PrintStartY moveto		% move to where printing will start
+    printBackground
+    Zebra{printZebra}if
+    printGlobalBackground
+    printLocalBackground
+  }if
+  PrintOnlyOneHeader{ColumnIndex 1 eq}{true}ifelse
+  dup PrintHeader and{
+    PrintHeaderFrame{HeaderFrame}if
+    HeaderText
+  }if
+  PrintFooter and{
+    PrintFooterFrame{FooterFrame}if
+    FooterText
+  }if
+  0 PrintStartY moveto			% move to where printing will start
+  /LineNumber where
+  {pop
+   SyncLineZebra
+   {/H PageNumber 1 sub NumberOfColumns mul ColumnIndex 1 sub add
+       LinesPerColumn mul ZebraHeight mod def
+    /PLScounter H PrintLineStart ge{0}{PrintLineStart H sub}ifelse def
+    /PrintLineStep ZebraHeight H sub def}if}if
+  PLN
+}def
+
+/EndPage{bg{eolbg}if}def
+
+/EndDSCPage{
+  ColumnIndex NumberOfColumns eq{
+    % ---- restore the state of the page
+    pageState restore
+    /ColumnIndex 1 def
+    % ---- N-up printing
+    N-Up 1 gt{
+      N-Up-Counter 0 gt
+      {% ---- Next page on same row
+	/N-Up-Counter N-Up-Counter 1 sub def
+	N-Up-XColumn N-Up-YColumn}
+      {% ---- Next page on next line
+	/N-Up-Counter N-Up-End 1 sub def
+	N-Up-XLine N-Up-YLine}ifelse
+      translate
+    }if
+  }{ % else
+    % ---- restore the state of the current column
+    columnState restore
+    % ---- and translate to the next column
+    ColumnWidth 0 translate
+    /ColumnIndex ColumnIndex 1 add def
+  }ifelse
+}def
+
+/TextStart{
+  LeftMargin BottomMargin
+  PrintFooter{
+    FooterPad add
+    FooterLines FooterLineHeight mul add
+    FooterPad add
+    FooterOffset add}if
+}def
+
+% stack: number-of-pages-per-sheet |- --
+/BeginSheet{
+  /sheetState save def
+  /pages-per-sheet exch def
+
+  % ---- translate to bottom-right corner of Portrait page
+  LandscapeMode{
+    LandscapePageHeight 0 translate
+    90 rotate
+  }if
+  % ---- [jack] Kludge: my ghostscript window is 21x27.7 instead of 21x29.7
+  /JackGhostscript where{pop 1 27.7 29.7 div scale}if
+  UpsideDown{PageWidth LandscapePageHeight translate 180 rotate}if
+  % ---- N-Up printing
+  N-Up 1 gt{
+    % ---- landscape
+    N-Up-Landscape{
+      PageWidth 0 translate
+      90 rotate
+    }if
+    N-Up-Margin dup translate
+    % ---- scale
+    LandscapeMode{
+      /HH PageWidth def
+      /WW LandscapePageHeight def
+    }{
+      /HH LandscapePageHeight def
+      /WW PageWidth def
+    }ifelse
+    /xx 0 def
+    N-Up-Landscape{
+      /ww WW WW mul N-Up-Lines HH mul div def
+      /cc HH N-Up-Columns N-Up-Missing add div def
+      ww cc gt{/xx WW def/WW cc ww div WW mul def/xx xx WW sub def}if
+    }{
+      /hh HH N-Up-Columns N-Up-Missing add div def
+      /cc HH N-Up-Lines div def
+      hh cc gt{/xx WW def/WW cc hh div WW mul def/xx xx WW sub def}if
+    }ifelse
+    WW N-Up-Margin sub N-Up-Margin sub
+    N-Up-Landscape
+    {N-Up-Lines div HH}
+    {N-Up-Columns N-Up-Missing add div WW}ifelse
+    div dup scale
+    LandscapeMode{/yy 0 def}{/yy xx def/xx 0 def}ifelse
+    xx N-Up-Repeat 1 sub LandscapePageHeight mul yy add translate
+    % ---- go to start position in page matrix
+    N-Up-XStart N-Up-Missing 0.5 mul
+    LandscapeMode
+    {LandscapePageHeight mul N-Up-YStart add}
+    {PageWidth mul add N-Up-YStart}ifelse
+    translate
+  }if
+  % ---- translate to lower left corner of TEXT
+  TextStart translate
+
+  % ---- N-up printing
+  N-Up 1 gt N-Up-Border and pages-per-sheet 0 gt and{
+    % ---- page border
+    gsave
+    0 setgray
+    TextStart exch neg exch neg moveto
+    N-Up-Repeat
+    {N-Up-End
+     {gsave
+      PageWidth 0 rlineto
+      0 LandscapePageHeight rlineto
+      PageWidth neg 0 rlineto
+      closepath stroke
+      grestore
+      /pages-per-sheet pages-per-sheet 1 sub def
+      pages-per-sheet 0 le{exit}if
+      N-Up-XColumn N-Up-YColumn rmoveto
+     }repeat
+     pages-per-sheet 0 le{exit}if
+     N-Up-XLine N-Up-XColumn sub N-Up-YLine rmoveto
+    }repeat
+    grestore
+  }if
+}def
+
+/EndSheet{
+  showpage
+  sheetState restore
+}def
+
+/SetHeaderLines{			% nb-lines --
+  /HeaderLines exch def
+  % ---- bottom up
+  HeaderPad
+  HeaderLines 1 sub HeaderLineHeight mul add
+  HeaderTitleLineHeight add
+  HeaderPad add
+  /HeaderHeight exch def
+}def
+
+/SetFooterLines{			% nb-lines --
+  /FooterLines exch def
+  % ---- bottom up
+  FooterPad
+  FooterLines FooterLineHeight mul add
+  FooterPad add
+  /FooterHeight exch def
+}def
+
+% |---------|
+% |  tm     |
+% |---------|
+% |  header |
+% |-+-------| <-- (x y)
+% |  ho     |
+% |---------|
+% |  text   |
+% |---------|
+% |  fo     |
+% |---------|
+% |  footer |
+% |-+-------| <-- (0 0)
+% |  bm     |
+% |---------|
+
+% -- |- x y
+/HeaderFrameStart{0  PrintHeight HeaderOffset add}def
+/FooterFrameStart{0  FooterHeight FooterOffset add neg}def
+
+/doFramePath{
+  /h exch def
+  PrintHeaderWidth	0	rlineto
+  0			h	rlineto
+  PrintHeaderWidth neg	0	rlineto
+  0			h neg	rlineto
+}def
+
+/HeaderFramePath{HeaderHeight doFramePath}def
+/FooterFramePath{FooterHeight doFramePath}def
+
+% /path-fun /start-fun vector-property doFrame
+/doFrame{
+  /vecFrame exch def
+  /startFrame exch load def
+  /pathFrame exch load def
+  gsave
+    vecFrame 2 get setlinewidth				% frame border width
+    % ---- do the shadow of the next rectangle
+    startFrame moveto
+    1 -1 rmoveto
+    pathFrame
+    vecFrame 4 get SetColor fill			% frame shadow color
+    % ---- do the next rectangle ...
+    startFrame moveto
+    pathFrame
+    gsave vecFrame 1 get SetColor fill grestore		% frame background
+    gsave vecFrame 3 get SetColor stroke grestore	% frame border color
+  grestore
+}def
+
+/HeaderFrame{/HeaderFramePath /HeaderFrameStart HeaderFrameProperties doFrame}def
+/FooterFrame{/FooterFramePath /FooterFrameStart FooterFrameProperties doFrame}def
+
+/HeaderStart{
+  HeaderFrameStart
+  exch HeaderPad add exch	% horizontal pad
+  % ---- bottom up
+  HeaderPad add			% vertical   pad
+  HeaderDescent sub
+  HeaderLineHeight HeaderLines 1 sub mul add
+}def
+
+/FooterStart{
+  FooterFrameStart
+  exch FooterPad add exch	% horizontal pad
+  % ---- bottom up
+  FooterPad add			% vertical   pad
+  FooterDescent sub
+  FooterLineHeight FooterLines 1 sub mul add
+}def
+
+/strcat{
+  dup length 3 -1 roll dup length dup 4 -1 roll add string dup
+  0 5 -1 roll putinterval
+  dup 4 2 roll exch putinterval
+}def
+
+/pagenumberstring{
+  PageNumber 32 string cvs
+  ShowNofN{(/)strcat PageCount 32 string cvs strcat}if
+}def
+
+% lines is-right HeaderOrFooterTextLines
+/HeaderOrFooterTextLines{
+  /is_right exch def
+  HFStart moveto
+  { % ---- process the lines
+   aload pop
+   exch F
+   gsave
+    dup xcheck{exec}if
+    is_right{
+     dup stringwidth pop
+     PrintHeaderWidth exch sub HFPad HFPad add sub 0 rmoveto
+    }if
+    HFColor SetColor
+    show
+   grestore
+   0 HFLineHeight neg rmoveto
+  }forall
+}def
+
+% right-lines left-lines /start lineheight pad fore-color HeaderOrFooterText
+/HeaderOrFooterText{
+  /HFColor exch def
+  /HFPad exch def
+  /HFLineHeight exch def
+  /HFStart exch load def
+
+  % -- rightLines leftLines -- at stack
+
+  % ---- hack: `PN 1 and'  ==  `PN 2 modulo'
+  % ---- if even page number and duplex, then exchange left and right
+  PageNumber 1 and 0 eq SwitchHeader and{exch}if
+
+  % ---- process the left lines
+  false HeaderOrFooterTextLines
+
+  % ---- process the right lines
+  true HeaderOrFooterTextLines
+}def
+
+/HeaderText{
+  HeaderLinesRight HeaderLinesLeft
+  /HeaderStart HeaderLineHeight HeaderPad
+  HeaderFrameProperties 0 get
+  HeaderOrFooterText
+}def
+
+/FooterText{
+  FooterLinesRight FooterLinesLeft
+  /FooterStart FooterLineHeight FooterPad
+  FooterFrameProperties 0 get
+  HeaderOrFooterText
+}def
+
+/ReportFontInfo{
+  2 copy
+  /t0 3 1 roll DefFont
+  /t0 F
+  /lh FontHeight def
+  /sw( )stringwidth pop def
+  /aw(01234567890abcdefghijklmnopqrstuvwxyz)dup length exch
+  stringwidth pop exch div def
+  /t1 12/Helvetica-Oblique DefFont
+  /t1 F
+  gsave
+    (languagelevel = )show
+    languagelevel 32 string cvs show
+  grestore
+  0 FontHeight neg rmoveto
+  gsave
+    (For )show
+    128 string cvs show
+    ( )show
+    32 string cvs show
+    ( point, the line height is )show
+    lh 32 string cvs show
+    (, the space width is )show
+    sw 32 string cvs show
+    (,)show
+  grestore
+  0 FontHeight neg rmoveto
+  gsave
+    (and a crude estimate of average character width is )show
+    aw 32 string cvs show
+    (.)show
+  grestore
+  0 FontHeight neg rmoveto
+}def
+
+% cm to point
+/cm{72 mul 2.54 div}def
+
+/ReportAllFontInfo{
+  % key = font name   value = font dictionary
+  FontDirectory{pop 10 exch ReportFontInfo}forall
+}def
+
+% 3 cm 20 cm moveto  10/Courier ReportFontInfo  showpage
+% 3 cm 20 cm moveto  ReportAllFontInfo          showpage
+
+% === END ps-print prologue 1
+
+/printGlobalBackground{
+}def
+/printLocalBackground{
+}def
+/h0 14(Helvetica-Bold)cvn DefFont
+/h1 12(Helvetica)cvn DefFont
+/L0 6(Times-Italic)cvn DefFont
+/H0 12(Helvetica)cvn DefFont
+
+
+% ---- These lines must be kept together because...
+
+/h0 F
+/HeaderTitleLineHeight FontHeight def
+
+/h1 F
+/HeaderLineHeight FontHeight def
+/HeaderDescent    Descent def
+
+/H0 F
+/FooterLineHeight FontHeight def
+/FooterDescent    Descent def
+
+% ---- ...because `F' has a side-effect on `FontHeight' and `Descent'
+
+/f0 8.5(Courier)cvn DefFont
+/f1 8.5(Courier-Bold)cvn DefFont
+/f2 8.5(Courier-Oblique)cvn DefFont
+/f3 8.5(Courier-BoldOblique)cvn DefFont
+/SpaceWidthRatio 0.600000 def
+
+%%EndProlog
+
+%%BeginSetup
+
+%%BeginFeature: *ManualFeed False
+BMark /ManualFeed false EMark setpagedevice
+%%EndFeature
+
+BeginDoc
+%%EndSetup
+
+%%Page: 1 1
+/Lines 548 def
+/PageCount 8 def
+1 BeginSheet
+BeginDSCPage
+/LineNumber 1 def
+/PageNumber 1 def
+/HeaderLinesLeft[
+ [/h0 (*Colors*)]
+ [/h1 ()]
+]def
+/HeaderLinesRight[
+ [/h0 /pagenumberstring load]
+ [/h1 (11/25/2002)]
+]def
+2 SetHeaderLines
+0 BeginPage
+/f0 F
+false BG
+0.000 0.000 0.000 FG
+1.000 0.980 0.980 true BG
+(snow                ) S
+1.000 0.980 0.980 FG
+false BG
+(  snow) S
+LHL
+0.000 0.000 0.000 FG
+0.973 0.973 1.000 true BG
+(ghost white         ) S
+0.973 0.973 1.000 FG
+false BG
+(  ghost white) S
+LHL
+0.000 0.000 0.000 FG
+0.961 0.961 0.961 true BG
+(white smoke         ) S
+0.961 0.961 0.961 FG
+false BG
+(  white smoke) S
+LHL
+0.000 0.000 0.000 FG
+0.863 0.863 0.863 true BG
+(gainsboro           ) S
+0.863 0.863 0.863 FG
+false BG
+(  gainsboro) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.980 0.941 true BG
+(floral white        ) S
+1.000 0.980 0.941 FG
+false BG
+(  floral white) S
+LHL
+0.000 0.000 0.000 FG
+0.992 0.961 0.902 true BG
+(old lace            ) S
+0.992 0.961 0.902 FG
+false BG
+(  old lace) S
+LHL
+0.000 0.000 0.000 FG
+0.980 0.941 0.902 true BG
+(linen               ) S
+0.980 0.941 0.902 FG
+false BG
+(  linen) S
+LHL
+0.000 0.000 0.000 FG
+0.980 0.922 0.843 true BG
+(antique white       ) S
+0.980 0.922 0.843 FG
+false BG
+(  antique white) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.937 0.835 true BG
+(papaya whip         ) S
+1.000 0.937 0.835 FG
+false BG
+(  papaya whip) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.922 0.804 true BG
+(blanched almond     ) S
+1.000 0.922 0.804 FG
+false BG
+(  blanched almond) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.894 0.769 true BG
+(bisque              ) S
+1.000 0.894 0.769 FG
+false BG
+(  bisque) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.855 0.725 true BG
+(peach puff          ) S
+1.000 0.855 0.725 FG
+false BG
+(  peach puff) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.871 0.678 true BG
+(navajo white        ) S
+1.000 0.871 0.678 FG
+false BG
+(  navajo white) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.894 0.710 true BG
+(moccasin            ) S
+1.000 0.894 0.710 FG
+false BG
+(  moccasin) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.973 0.863 true BG
+(cornsilk            ) S
+1.000 0.973 0.863 FG
+false BG
+(  cornsilk) S
+LHL
+0.000 0.000 0.000 FG
+1.000 1.000 0.941 true BG
+(ivory               ) S
+1.000 1.000 0.941 FG
+false BG
+(  ivory) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.980 0.804 true BG
+(lemon chiffon       ) S
+1.000 0.980 0.804 FG
+false BG
+(  lemon chiffon) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.961 0.933 true BG
+(seashell            ) S
+1.000 0.961 0.933 FG
+false BG
+(  seashell) S
+LHL
+0.000 0.000 0.000 FG
+0.941 1.000 0.941 true BG
+(honeydew            ) S
+0.941 1.000 0.941 FG
+false BG
+(  honeydew) S
+LHL
+0.000 0.000 0.000 FG
+0.961 1.000 0.980 true BG
+(mint cream          ) S
+0.961 1.000 0.980 FG
+false BG
+(  mint cream) S
+LHL
+0.000 0.000 0.000 FG
+0.941 1.000 1.000 true BG
+(azure               ) S
+0.941 1.000 1.000 FG
+false BG
+(  azure) S
+LHL
+0.000 0.000 0.000 FG
+0.941 0.973 1.000 true BG
+(alice blue          ) S
+0.941 0.973 1.000 FG
+false BG
+(  alice blue) S
+LHL
+0.000 0.000 0.000 FG
+0.902 0.902 0.980 true BG
+(lavender            ) S
+0.902 0.902 0.980 FG
+false BG
+(  lavender) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.941 0.961 true BG
+(lavender blush      ) S
+1.000 0.941 0.961 FG
+false BG
+(  lavender blush) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.894 0.882 true BG
+(misty rose          ) S
+1.000 0.894 0.882 FG
+false BG
+(  misty rose) S
+LHL
+0.000 0.000 0.000 FG
+1.000 1.000 1.000 true BG
+(white               ) S
+1.000 1.000 1.000 FG
+false BG
+(  white) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.000 0.000 true BG
+(black               ) S
+false BG
+(  black) S
+LHL
+0.184 0.310 0.310 true BG
+(dark slate gray     ) S
+0.184 0.310 0.310 FG
+false BG
+(  dark slate gray) S
+LHL
+0.000 0.000 0.000 FG
+0.412 0.412 0.412 true BG
+(dim gray            ) S
+0.412 0.412 0.412 FG
+false BG
+(  dim gray) S
+LHL
+0.000 0.000 0.000 FG
+0.439 0.502 0.565 true BG
+(slate gray          ) S
+0.439 0.502 0.565 FG
+false BG
+(  slate gray) S
+LHL
+0.000 0.000 0.000 FG
+0.467 0.533 0.600 true BG
+(light slate gray    ) S
+0.467 0.533 0.600 FG
+false BG
+(  light slate gray) S
+LHL
+0.000 0.000 0.000 FG
+0.745 0.745 0.745 true BG
+(gray                ) S
+0.745 0.745 0.745 FG
+false BG
+(  gray) S
+LHL
+0.000 0.000 0.000 FG
+0.827 0.827 0.827 true BG
+(light grey          ) S
+0.827 0.827 0.827 FG
+false BG
+(  light grey) S
+LHL
+0.000 0.000 0.000 FG
+0.098 0.098 0.439 true BG
+(midnight blue       ) S
+0.098 0.098 0.439 FG
+false BG
+(  midnight blue) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.000 0.502 true BG
+(navy                ) S
+0.000 0.000 0.502 FG
+false BG
+(  navy) S
+LHL
+0.000 0.000 0.000 FG
+0.392 0.584 0.929 true BG
+(cornflower blue     ) S
+0.392 0.584 0.929 FG
+false BG
+(  cornflower blue) S
+LHL
+0.000 0.000 0.000 FG
+0.282 0.239 0.545 true BG
+(dark slate blue     ) S
+0.282 0.239 0.545 FG
+false BG
+(  dark slate blue) S
+LHL
+0.000 0.000 0.000 FG
+0.416 0.353 0.804 true BG
+(slate blue          ) S
+0.416 0.353 0.804 FG
+false BG
+(  slate blue) S
+LHL
+0.000 0.000 0.000 FG
+0.482 0.408 0.933 true BG
+(medium slate blue   ) S
+0.482 0.408 0.933 FG
+false BG
+(  medium slate blue) S
+LHL
+0.000 0.000 0.000 FG
+0.518 0.439 1.000 true BG
+(light slate blue    ) S
+0.518 0.439 1.000 FG
+false BG
+(  light slate blue) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.000 0.804 true BG
+(medium blue         ) S
+0.000 0.000 0.804 FG
+false BG
+(  medium blue) S
+LHL
+0.000 0.000 0.000 FG
+0.255 0.412 0.882 true BG
+(royal blue          ) S
+0.255 0.412 0.882 FG
+false BG
+(  royal blue) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.000 1.000 true BG
+(blue                ) S
+0.000 0.000 1.000 FG
+false BG
+(  blue) S
+LHL
+0.000 0.000 0.000 FG
+0.118 0.565 1.000 true BG
+(dodger blue         ) S
+0.118 0.565 1.000 FG
+false BG
+(  dodger blue) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.749 1.000 true BG
+(deep sky blue       ) S
+0.000 0.749 1.000 FG
+false BG
+(  deep sky blue) S
+LHL
+0.000 0.000 0.000 FG
+0.529 0.808 0.922 true BG
+(sky blue            ) S
+0.529 0.808 0.922 FG
+false BG
+(  sky blue) S
+LHL
+0.000 0.000 0.000 FG
+0.529 0.808 0.980 true BG
+(light sky blue      ) S
+0.529 0.808 0.980 FG
+false BG
+(  light sky blue) S
+LHL
+0.000 0.000 0.000 FG
+0.275 0.510 0.706 true BG
+(steel blue          ) S
+0.275 0.510 0.706 FG
+false BG
+(  steel blue) S
+LHL
+0.000 0.000 0.000 FG
+0.690 0.769 0.871 true BG
+(light steel blue    ) S
+0.690 0.769 0.871 FG
+false BG
+(  light steel blue) S
+LHL
+0.000 0.000 0.000 FG
+0.678 0.847 0.902 true BG
+(light blue          ) S
+0.678 0.847 0.902 FG
+false BG
+(  light blue) S
+LHL
+0.000 0.000 0.000 FG
+0.690 0.878 0.902 true BG
+(powder blue         ) S
+0.690 0.878 0.902 FG
+false BG
+(  powder blue) S
+LHL
+0.000 0.000 0.000 FG
+0.686 0.933 0.933 true BG
+(pale turquoise      ) S
+0.686 0.933 0.933 FG
+false BG
+(  pale turquoise) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.808 0.820 true BG
+(dark turquoise      ) S
+0.000 0.808 0.820 FG
+false BG
+(  dark turquoise) S
+LHL
+0.000 0.000 0.000 FG
+0.282 0.820 0.800 true BG
+(medium turquoise    ) S
+0.282 0.820 0.800 FG
+false BG
+(  medium turquoise) S
+LHL
+0.000 0.000 0.000 FG
+0.251 0.878 0.816 true BG
+(turquoise           ) S
+0.251 0.878 0.816 FG
+false BG
+(  turquoise) S
+LHL
+0.000 0.000 0.000 FG
+0.000 1.000 1.000 true BG
+(cyan                ) S
+0.000 1.000 1.000 FG
+false BG
+(  cyan) S
+LHL
+0.000 0.000 0.000 FG
+0.878 1.000 1.000 true BG
+(light cyan          ) S
+0.878 1.000 1.000 FG
+false BG
+(  light cyan) S
+LHL
+0.000 0.000 0.000 FG
+0.373 0.620 0.627 true BG
+(cadet blue          ) S
+0.373 0.620 0.627 FG
+false BG
+(  cadet blue) S
+LHL
+0.000 0.000 0.000 FG
+0.400 0.804 0.667 true BG
+(medium aquamarine   ) S
+0.400 0.804 0.667 FG
+false BG
+(  medium aquamarine) S
+LHL
+0.000 0.000 0.000 FG
+0.498 1.000 0.831 true BG
+(aquamarine          ) S
+0.498 1.000 0.831 FG
+false BG
+(  aquamarine) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.392 0.000 true BG
+(dark green          ) S
+0.000 0.392 0.000 FG
+false BG
+(  dark green) S
+LHL
+0.000 0.000 0.000 FG
+0.333 0.420 0.184 true BG
+(dark olive green    ) S
+0.333 0.420 0.184 FG
+false BG
+(  dark olive green) S
+LHL
+0.000 0.000 0.000 FG
+0.561 0.737 0.561 true BG
+(dark sea green      ) S
+0.561 0.737 0.561 FG
+false BG
+(  dark sea green) S
+LHL
+0.000 0.000 0.000 FG
+0.180 0.545 0.341 true BG
+(sea green           ) S
+0.180 0.545 0.341 FG
+false BG
+(  sea green) S
+LHL
+0.000 0.000 0.000 FG
+0.235 0.702 0.443 true BG
+(medium sea green    ) S
+0.235 0.702 0.443 FG
+false BG
+(  medium sea green) S
+LHL
+0.000 0.000 0.000 FG
+0.125 0.698 0.667 true BG
+(light sea green     ) S
+0.125 0.698 0.667 FG
+false BG
+(  light sea green) S
+LHL
+0.000 0.000 0.000 FG
+0.596 0.984 0.596 true BG
+(pale green          ) S
+0.596 0.984 0.596 FG
+false BG
+(  pale green) S
+LHL
+0.000 0.000 0.000 FG
+0.000 1.000 0.498 true BG
+(spring green        ) S
+0.000 1.000 0.498 FG
+false BG
+(  spring green) S
+LHL
+0.000 0.000 0.000 FG
+0.486 0.988 0.000 true BG
+(lawn green          ) S
+0.486 0.988 0.000 FG
+false BG
+(  lawn green) S
+LHL
+0.000 0.000 0.000 FG
+0.000 1.000 0.000 true BG
+(green               ) S
+0.000 1.000 0.000 FG
+false BG
+(  green) S
+LHL
+0.000 0.000 0.000 FG
+0.498 1.000 0.000 true BG
+(chartreuse          ) S
+0.498 1.000 0.000 FG
+false BG
+(  chartreuse) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.980 0.604 true BG
+(medium spring green ) S
+0.000 0.980 0.604 FG
+false BG
+(  medium spring green) S
+EndPage
+EndDSCPage
+EndSheet
+
+%%Page: 2 2
+/Lines 548 def
+/PageCount 8 def
+1 BeginSheet
+BeginDSCPage
+/LineNumber 73 def
+/PageNumber 2 def
+/HeaderLinesLeft[
+ [/h0 (*Colors*)]
+ [/h1 ()]
+]def
+/HeaderLinesRight[
+ [/h0 /pagenumberstring load]
+ [/h1 (11/25/2002)]
+]def
+2 SetHeaderLines
+72 BeginPage
+/f0 F
+false BG
+0.000 0.980 0.604 FG
+0.000 0.000 0.000 FG
+0.678 1.000 0.184 true BG
+(green yellow        ) S
+0.678 1.000 0.184 FG
+false BG
+(  green yellow) S
+LHL
+0.000 0.000 0.000 FG
+0.196 0.804 0.196 true BG
+(lime green          ) S
+0.196 0.804 0.196 FG
+false BG
+(  lime green) S
+LHL
+0.000 0.000 0.000 FG
+0.604 0.804 0.196 true BG
+(yellow green        ) S
+0.604 0.804 0.196 FG
+false BG
+(  yellow green) S
+LHL
+0.000 0.000 0.000 FG
+0.133 0.545 0.133 true BG
+(forest green        ) S
+0.133 0.545 0.133 FG
+false BG
+(  forest green) S
+LHL
+0.000 0.000 0.000 FG
+0.420 0.557 0.137 true BG
+(olive drab          ) S
+0.420 0.557 0.137 FG
+false BG
+(  olive drab) S
+LHL
+0.000 0.000 0.000 FG
+0.741 0.718 0.420 true BG
+(dark khaki          ) S
+0.741 0.718 0.420 FG
+false BG
+(  dark khaki) S
+LHL
+0.000 0.000 0.000 FG
+0.941 0.902 0.549 true BG
+(khaki               ) S
+0.941 0.902 0.549 FG
+false BG
+(  khaki) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.910 0.667 true BG
+(pale goldenrod      ) S
+0.933 0.910 0.667 FG
+false BG
+(  pale goldenrod) S
+LHL
+0.000 0.000 0.000 FG
+0.980 0.980 0.824 true BG
+(light goldenrod yellow) S
+0.980 0.980 0.824 FG
+false BG
+(  light goldenrod yellow) S
+LHL
+0.000 0.000 0.000 FG
+1.000 1.000 0.878 true BG
+(light yellow        ) S
+1.000 1.000 0.878 FG
+false BG
+(  light yellow) S
+LHL
+0.000 0.000 0.000 FG
+1.000 1.000 0.000 true BG
+(yellow              ) S
+1.000 1.000 0.000 FG
+false BG
+(  yellow) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.843 0.000 true BG
+(gold                ) S
+1.000 0.843 0.000 FG
+false BG
+(  gold) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.867 0.510 true BG
+(light goldenrod     ) S
+0.933 0.867 0.510 FG
+false BG
+(  light goldenrod) S
+LHL
+0.000 0.000 0.000 FG
+0.855 0.647 0.125 true BG
+(goldenrod           ) S
+0.855 0.647 0.125 FG
+false BG
+(  goldenrod) S
+LHL
+0.000 0.000 0.000 FG
+0.722 0.525 0.043 true BG
+(dark goldenrod      ) S
+0.722 0.525 0.043 FG
+false BG
+(  dark goldenrod) S
+LHL
+0.000 0.000 0.000 FG
+0.737 0.561 0.561 true BG
+(rosy brown          ) S
+0.737 0.561 0.561 FG
+false BG
+(  rosy brown) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.361 0.361 true BG
+(indian red          ) S
+0.804 0.361 0.361 FG
+false BG
+(  indian red) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.271 0.075 true BG
+(saddle brown        ) S
+0.545 0.271 0.075 FG
+false BG
+(  saddle brown) S
+LHL
+0.000 0.000 0.000 FG
+0.627 0.322 0.176 true BG
+(sienna              ) S
+0.627 0.322 0.176 FG
+false BG
+(  sienna) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.522 0.247 true BG
+(peru                ) S
+0.804 0.522 0.247 FG
+false BG
+(  peru) S
+LHL
+0.000 0.000 0.000 FG
+0.871 0.722 0.529 true BG
+(burlywood           ) S
+0.871 0.722 0.529 FG
+false BG
+(  burlywood) S
+LHL
+0.000 0.000 0.000 FG
+0.961 0.961 0.863 true BG
+(beige               ) S
+0.961 0.961 0.863 FG
+false BG
+(  beige) S
+LHL
+0.000 0.000 0.000 FG
+0.961 0.871 0.702 true BG
+(wheat               ) S
+0.961 0.871 0.702 FG
+false BG
+(  wheat) S
+LHL
+0.000 0.000 0.000 FG
+0.957 0.643 0.376 true BG
+(sandy brown         ) S
+0.957 0.643 0.376 FG
+false BG
+(  sandy brown) S
+LHL
+0.000 0.000 0.000 FG
+0.824 0.706 0.549 true BG
+(tan                 ) S
+0.824 0.706 0.549 FG
+false BG
+(  tan) S
+LHL
+0.000 0.000 0.000 FG
+0.824 0.412 0.118 true BG
+(chocolate           ) S
+0.824 0.412 0.118 FG
+false BG
+(  chocolate) S
+LHL
+0.000 0.000 0.000 FG
+0.698 0.133 0.133 true BG
+(firebrick           ) S
+0.698 0.133 0.133 FG
+false BG
+(  firebrick) S
+LHL
+0.000 0.000 0.000 FG
+0.647 0.165 0.165 true BG
+(brown               ) S
+0.647 0.165 0.165 FG
+false BG
+(  brown) S
+LHL
+0.000 0.000 0.000 FG
+0.914 0.588 0.478 true BG
+(dark salmon         ) S
+0.914 0.588 0.478 FG
+false BG
+(  dark salmon) S
+LHL
+0.000 0.000 0.000 FG
+0.980 0.502 0.447 true BG
+(salmon              ) S
+0.980 0.502 0.447 FG
+false BG
+(  salmon) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.627 0.478 true BG
+(light salmon        ) S
+1.000 0.627 0.478 FG
+false BG
+(  light salmon) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.647 0.000 true BG
+(orange              ) S
+1.000 0.647 0.000 FG
+false BG
+(  orange) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.549 0.000 true BG
+(dark orange         ) S
+1.000 0.549 0.000 FG
+false BG
+(  dark orange) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.498 0.314 true BG
+(coral               ) S
+1.000 0.498 0.314 FG
+false BG
+(  coral) S
+LHL
+0.000 0.000 0.000 FG
+0.941 0.502 0.502 true BG
+(light coral         ) S
+0.941 0.502 0.502 FG
+false BG
+(  light coral) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.388 0.278 true BG
+(tomato              ) S
+1.000 0.388 0.278 FG
+false BG
+(  tomato) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.271 0.000 true BG
+(orange red          ) S
+1.000 0.271 0.000 FG
+false BG
+(  orange red) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.000 0.000 true BG
+(red                 ) S
+1.000 0.000 0.000 FG
+false BG
+(  red) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.412 0.706 true BG
+(hot pink            ) S
+1.000 0.412 0.706 FG
+false BG
+(  hot pink) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.078 0.576 true BG
+(deep pink           ) S
+1.000 0.078 0.576 FG
+false BG
+(  deep pink) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.753 0.796 true BG
+(pink                ) S
+1.000 0.753 0.796 FG
+false BG
+(  pink) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.714 0.757 true BG
+(light pink          ) S
+1.000 0.714 0.757 FG
+false BG
+(  light pink) S
+LHL
+0.000 0.000 0.000 FG
+0.859 0.439 0.576 true BG
+(pale violet red     ) S
+0.859 0.439 0.576 FG
+false BG
+(  pale violet red) S
+LHL
+0.000 0.000 0.000 FG
+0.690 0.188 0.376 true BG
+(maroon              ) S
+0.690 0.188 0.376 FG
+false BG
+(  maroon) S
+LHL
+0.000 0.000 0.000 FG
+0.780 0.082 0.522 true BG
+(medium violet red   ) S
+0.780 0.082 0.522 FG
+false BG
+(  medium violet red) S
+LHL
+0.000 0.000 0.000 FG
+0.816 0.125 0.565 true BG
+(violet red          ) S
+0.816 0.125 0.565 FG
+false BG
+(  violet red) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.000 1.000 true BG
+(magenta             ) S
+1.000 0.000 1.000 FG
+false BG
+(  magenta) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.510 0.933 true BG
+(violet              ) S
+0.933 0.510 0.933 FG
+false BG
+(  violet) S
+LHL
+0.000 0.000 0.000 FG
+0.867 0.627 0.867 true BG
+(plum                ) S
+0.867 0.627 0.867 FG
+false BG
+(  plum) S
+LHL
+0.000 0.000 0.000 FG
+0.855 0.439 0.839 true BG
+(orchid              ) S
+0.855 0.439 0.839 FG
+false BG
+(  orchid) S
+LHL
+0.000 0.000 0.000 FG
+0.729 0.333 0.827 true BG
+(medium orchid       ) S
+0.729 0.333 0.827 FG
+false BG
+(  medium orchid) S
+LHL
+0.000 0.000 0.000 FG
+0.600 0.196 0.800 true BG
+(dark orchid         ) S
+0.600 0.196 0.800 FG
+false BG
+(  dark orchid) S
+LHL
+0.000 0.000 0.000 FG
+0.580 0.000 0.827 true BG
+(dark violet         ) S
+0.580 0.000 0.827 FG
+false BG
+(  dark violet) S
+LHL
+0.000 0.000 0.000 FG
+0.541 0.169 0.886 true BG
+(blue violet         ) S
+0.541 0.169 0.886 FG
+false BG
+(  blue violet) S
+LHL
+0.000 0.000 0.000 FG
+0.627 0.125 0.941 true BG
+(purple              ) S
+0.627 0.125 0.941 FG
+false BG
+(  purple) S
+LHL
+0.000 0.000 0.000 FG
+0.576 0.439 0.859 true BG
+(medium purple       ) S
+0.576 0.439 0.859 FG
+false BG
+(  medium purple) S
+LHL
+0.000 0.000 0.000 FG
+0.847 0.749 0.847 true BG
+(thistle             ) S
+0.847 0.749 0.847 FG
+false BG
+(  thistle) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.980 0.980 true BG
+(snow1               ) S
+1.000 0.980 0.980 FG
+false BG
+(  snow1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.914 0.914 true BG
+(snow2               ) S
+0.933 0.914 0.914 FG
+false BG
+(  snow2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.788 0.788 true BG
+(snow3               ) S
+0.804 0.788 0.788 FG
+false BG
+(  snow3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.537 0.537 true BG
+(snow4               ) S
+0.545 0.537 0.537 FG
+false BG
+(  snow4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.961 0.933 true BG
+(seashell1           ) S
+1.000 0.961 0.933 FG
+false BG
+(  seashell1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.898 0.871 true BG
+(seashell2           ) S
+0.933 0.898 0.871 FG
+false BG
+(  seashell2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.773 0.749 true BG
+(seashell3           ) S
+0.804 0.773 0.749 FG
+false BG
+(  seashell3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.525 0.510 true BG
+(seashell4           ) S
+0.545 0.525 0.510 FG
+false BG
+(  seashell4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.937 0.859 true BG
+(AntiqueWhite1       ) S
+1.000 0.937 0.859 FG
+false BG
+(  AntiqueWhite1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.875 0.800 true BG
+(AntiqueWhite2       ) S
+0.933 0.875 0.800 FG
+false BG
+(  AntiqueWhite2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.753 0.690 true BG
+(AntiqueWhite3       ) S
+0.804 0.753 0.690 FG
+false BG
+(  AntiqueWhite3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.514 0.471 true BG
+(AntiqueWhite4       ) S
+0.545 0.514 0.471 FG
+false BG
+(  AntiqueWhite4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.894 0.769 true BG
+(bisque1             ) S
+1.000 0.894 0.769 FG
+false BG
+(  bisque1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.835 0.718 true BG
+(bisque2             ) S
+0.933 0.835 0.718 FG
+false BG
+(  bisque2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.718 0.620 true BG
+(bisque3             ) S
+0.804 0.718 0.620 FG
+false BG
+(  bisque3) S
+EndPage
+EndDSCPage
+EndSheet
+
+%%Page: 3 3
+/Lines 548 def
+/PageCount 8 def
+1 BeginSheet
+BeginDSCPage
+/LineNumber 145 def
+/PageNumber 3 def
+/HeaderLinesLeft[
+ [/h0 (*Colors*)]
+ [/h1 ()]
+]def
+/HeaderLinesRight[
+ [/h0 /pagenumberstring load]
+ [/h1 (11/25/2002)]
+]def
+2 SetHeaderLines
+144 BeginPage
+/f0 F
+false BG
+0.804 0.718 0.620 FG
+0.000 0.000 0.000 FG
+0.545 0.490 0.420 true BG
+(bisque4             ) S
+0.545 0.490 0.420 FG
+false BG
+(  bisque4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.855 0.725 true BG
+(PeachPuff1          ) S
+1.000 0.855 0.725 FG
+false BG
+(  PeachPuff1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.796 0.678 true BG
+(PeachPuff2          ) S
+0.933 0.796 0.678 FG
+false BG
+(  PeachPuff2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.686 0.584 true BG
+(PeachPuff3          ) S
+0.804 0.686 0.584 FG
+false BG
+(  PeachPuff3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.467 0.396 true BG
+(PeachPuff4          ) S
+0.545 0.467 0.396 FG
+false BG
+(  PeachPuff4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.871 0.678 true BG
+(NavajoWhite1        ) S
+1.000 0.871 0.678 FG
+false BG
+(  NavajoWhite1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.812 0.631 true BG
+(NavajoWhite2        ) S
+0.933 0.812 0.631 FG
+false BG
+(  NavajoWhite2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.702 0.545 true BG
+(NavajoWhite3        ) S
+0.804 0.702 0.545 FG
+false BG
+(  NavajoWhite3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.475 0.369 true BG
+(NavajoWhite4        ) S
+0.545 0.475 0.369 FG
+false BG
+(  NavajoWhite4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.980 0.804 true BG
+(LemonChiffon1       ) S
+1.000 0.980 0.804 FG
+false BG
+(  LemonChiffon1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.914 0.749 true BG
+(LemonChiffon2       ) S
+0.933 0.914 0.749 FG
+false BG
+(  LemonChiffon2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.788 0.647 true BG
+(LemonChiffon3       ) S
+0.804 0.788 0.647 FG
+false BG
+(  LemonChiffon3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.537 0.439 true BG
+(LemonChiffon4       ) S
+0.545 0.537 0.439 FG
+false BG
+(  LemonChiffon4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.973 0.863 true BG
+(cornsilk1           ) S
+1.000 0.973 0.863 FG
+false BG
+(  cornsilk1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.910 0.804 true BG
+(cornsilk2           ) S
+0.933 0.910 0.804 FG
+false BG
+(  cornsilk2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.784 0.694 true BG
+(cornsilk3           ) S
+0.804 0.784 0.694 FG
+false BG
+(  cornsilk3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.533 0.471 true BG
+(cornsilk4           ) S
+0.545 0.533 0.471 FG
+false BG
+(  cornsilk4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 1.000 0.941 true BG
+(ivory1              ) S
+1.000 1.000 0.941 FG
+false BG
+(  ivory1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.933 0.878 true BG
+(ivory2              ) S
+0.933 0.933 0.878 FG
+false BG
+(  ivory2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.804 0.757 true BG
+(ivory3              ) S
+0.804 0.804 0.757 FG
+false BG
+(  ivory3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.545 0.514 true BG
+(ivory4              ) S
+0.545 0.545 0.514 FG
+false BG
+(  ivory4) S
+LHL
+0.000 0.000 0.000 FG
+0.941 1.000 0.941 true BG
+(honeydew1           ) S
+0.941 1.000 0.941 FG
+false BG
+(  honeydew1) S
+LHL
+0.000 0.000 0.000 FG
+0.878 0.933 0.878 true BG
+(honeydew2           ) S
+0.878 0.933 0.878 FG
+false BG
+(  honeydew2) S
+LHL
+0.000 0.000 0.000 FG
+0.757 0.804 0.757 true BG
+(honeydew3           ) S
+0.757 0.804 0.757 FG
+false BG
+(  honeydew3) S
+LHL
+0.000 0.000 0.000 FG
+0.514 0.545 0.514 true BG
+(honeydew4           ) S
+0.514 0.545 0.514 FG
+false BG
+(  honeydew4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.941 0.961 true BG
+(LavenderBlush1      ) S
+1.000 0.941 0.961 FG
+false BG
+(  LavenderBlush1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.878 0.898 true BG
+(LavenderBlush2      ) S
+0.933 0.878 0.898 FG
+false BG
+(  LavenderBlush2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.757 0.773 true BG
+(LavenderBlush3      ) S
+0.804 0.757 0.773 FG
+false BG
+(  LavenderBlush3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.514 0.525 true BG
+(LavenderBlush4      ) S
+0.545 0.514 0.525 FG
+false BG
+(  LavenderBlush4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.894 0.882 true BG
+(MistyRose1          ) S
+1.000 0.894 0.882 FG
+false BG
+(  MistyRose1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.835 0.824 true BG
+(MistyRose2          ) S
+0.933 0.835 0.824 FG
+false BG
+(  MistyRose2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.718 0.710 true BG
+(MistyRose3          ) S
+0.804 0.718 0.710 FG
+false BG
+(  MistyRose3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.490 0.482 true BG
+(MistyRose4          ) S
+0.545 0.490 0.482 FG
+false BG
+(  MistyRose4) S
+LHL
+0.000 0.000 0.000 FG
+0.941 1.000 1.000 true BG
+(azure1              ) S
+0.941 1.000 1.000 FG
+false BG
+(  azure1) S
+LHL
+0.000 0.000 0.000 FG
+0.878 0.933 0.933 true BG
+(azure2              ) S
+0.878 0.933 0.933 FG
+false BG
+(  azure2) S
+LHL
+0.000 0.000 0.000 FG
+0.757 0.804 0.804 true BG
+(azure3              ) S
+0.757 0.804 0.804 FG
+false BG
+(  azure3) S
+LHL
+0.000 0.000 0.000 FG
+0.514 0.545 0.545 true BG
+(azure4              ) S
+0.514 0.545 0.545 FG
+false BG
+(  azure4) S
+LHL
+0.000 0.000 0.000 FG
+0.514 0.435 1.000 true BG
+(SlateBlue1          ) S
+0.514 0.435 1.000 FG
+false BG
+(  SlateBlue1) S
+LHL
+0.000 0.000 0.000 FG
+0.478 0.404 0.933 true BG
+(SlateBlue2          ) S
+0.478 0.404 0.933 FG
+false BG
+(  SlateBlue2) S
+LHL
+0.000 0.000 0.000 FG
+0.412 0.349 0.804 true BG
+(SlateBlue3          ) S
+0.412 0.349 0.804 FG
+false BG
+(  SlateBlue3) S
+LHL
+0.000 0.000 0.000 FG
+0.278 0.235 0.545 true BG
+(SlateBlue4          ) S
+0.278 0.235 0.545 FG
+false BG
+(  SlateBlue4) S
+LHL
+0.000 0.000 0.000 FG
+0.282 0.463 1.000 true BG
+(RoyalBlue1          ) S
+0.282 0.463 1.000 FG
+false BG
+(  RoyalBlue1) S
+LHL
+0.000 0.000 0.000 FG
+0.263 0.431 0.933 true BG
+(RoyalBlue2          ) S
+0.263 0.431 0.933 FG
+false BG
+(  RoyalBlue2) S
+LHL
+0.000 0.000 0.000 FG
+0.227 0.373 0.804 true BG
+(RoyalBlue3          ) S
+0.227 0.373 0.804 FG
+false BG
+(  RoyalBlue3) S
+LHL
+0.000 0.000 0.000 FG
+0.153 0.251 0.545 true BG
+(RoyalBlue4          ) S
+0.153 0.251 0.545 FG
+false BG
+(  RoyalBlue4) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.000 1.000 true BG
+(blue1               ) S
+0.000 0.000 1.000 FG
+false BG
+(  blue1) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.000 0.933 true BG
+(blue2               ) S
+0.000 0.000 0.933 FG
+false BG
+(  blue2) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.000 0.804 true BG
+(blue3               ) S
+0.000 0.000 0.804 FG
+false BG
+(  blue3) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.000 0.545 true BG
+(blue4               ) S
+0.000 0.000 0.545 FG
+false BG
+(  blue4) S
+LHL
+0.000 0.000 0.000 FG
+0.118 0.565 1.000 true BG
+(DodgerBlue1         ) S
+0.118 0.565 1.000 FG
+false BG
+(  DodgerBlue1) S
+LHL
+0.000 0.000 0.000 FG
+0.110 0.525 0.933 true BG
+(DodgerBlue2         ) S
+0.110 0.525 0.933 FG
+false BG
+(  DodgerBlue2) S
+LHL
+0.000 0.000 0.000 FG
+0.094 0.455 0.804 true BG
+(DodgerBlue3         ) S
+0.094 0.455 0.804 FG
+false BG
+(  DodgerBlue3) S
+LHL
+0.000 0.000 0.000 FG
+0.063 0.306 0.545 true BG
+(DodgerBlue4         ) S
+0.063 0.306 0.545 FG
+false BG
+(  DodgerBlue4) S
+LHL
+0.000 0.000 0.000 FG
+0.388 0.722 1.000 true BG
+(SteelBlue1          ) S
+0.388 0.722 1.000 FG
+false BG
+(  SteelBlue1) S
+LHL
+0.000 0.000 0.000 FG
+0.361 0.675 0.933 true BG
+(SteelBlue2          ) S
+0.361 0.675 0.933 FG
+false BG
+(  SteelBlue2) S
+LHL
+0.000 0.000 0.000 FG
+0.310 0.580 0.804 true BG
+(SteelBlue3          ) S
+0.310 0.580 0.804 FG
+false BG
+(  SteelBlue3) S
+LHL
+0.000 0.000 0.000 FG
+0.212 0.392 0.545 true BG
+(SteelBlue4          ) S
+0.212 0.392 0.545 FG
+false BG
+(  SteelBlue4) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.749 1.000 true BG
+(DeepSkyBlue1        ) S
+0.000 0.749 1.000 FG
+false BG
+(  DeepSkyBlue1) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.698 0.933 true BG
+(DeepSkyBlue2        ) S
+0.000 0.698 0.933 FG
+false BG
+(  DeepSkyBlue2) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.604 0.804 true BG
+(DeepSkyBlue3        ) S
+0.000 0.604 0.804 FG
+false BG
+(  DeepSkyBlue3) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.408 0.545 true BG
+(DeepSkyBlue4        ) S
+0.000 0.408 0.545 FG
+false BG
+(  DeepSkyBlue4) S
+LHL
+0.000 0.000 0.000 FG
+0.529 0.808 1.000 true BG
+(SkyBlue1            ) S
+0.529 0.808 1.000 FG
+false BG
+(  SkyBlue1) S
+LHL
+0.000 0.000 0.000 FG
+0.494 0.753 0.933 true BG
+(SkyBlue2            ) S
+0.494 0.753 0.933 FG
+false BG
+(  SkyBlue2) S
+LHL
+0.000 0.000 0.000 FG
+0.424 0.651 0.804 true BG
+(SkyBlue3            ) S
+0.424 0.651 0.804 FG
+false BG
+(  SkyBlue3) S
+LHL
+0.000 0.000 0.000 FG
+0.290 0.439 0.545 true BG
+(SkyBlue4            ) S
+0.290 0.439 0.545 FG
+false BG
+(  SkyBlue4) S
+LHL
+0.000 0.000 0.000 FG
+0.690 0.886 1.000 true BG
+(LightSkyBlue1       ) S
+0.690 0.886 1.000 FG
+false BG
+(  LightSkyBlue1) S
+LHL
+0.000 0.000 0.000 FG
+0.643 0.827 0.933 true BG
+(LightSkyBlue2       ) S
+0.643 0.827 0.933 FG
+false BG
+(  LightSkyBlue2) S
+LHL
+0.000 0.000 0.000 FG
+0.553 0.714 0.804 true BG
+(LightSkyBlue3       ) S
+0.553 0.714 0.804 FG
+false BG
+(  LightSkyBlue3) S
+LHL
+0.000 0.000 0.000 FG
+0.376 0.482 0.545 true BG
+(LightSkyBlue4       ) S
+0.376 0.482 0.545 FG
+false BG
+(  LightSkyBlue4) S
+LHL
+0.000 0.000 0.000 FG
+0.776 0.886 1.000 true BG
+(SlateGray1          ) S
+0.776 0.886 1.000 FG
+false BG
+(  SlateGray1) S
+LHL
+0.000 0.000 0.000 FG
+0.725 0.827 0.933 true BG
+(SlateGray2          ) S
+0.725 0.827 0.933 FG
+false BG
+(  SlateGray2) S
+LHL
+0.000 0.000 0.000 FG
+0.624 0.714 0.804 true BG
+(SlateGray3          ) S
+0.624 0.714 0.804 FG
+false BG
+(  SlateGray3) S
+EndPage
+EndDSCPage
+EndSheet
+
+%%Page: 4 4
+/Lines 548 def
+/PageCount 8 def
+1 BeginSheet
+BeginDSCPage
+/LineNumber 217 def
+/PageNumber 4 def
+/HeaderLinesLeft[
+ [/h0 (*Colors*)]
+ [/h1 ()]
+]def
+/HeaderLinesRight[
+ [/h0 /pagenumberstring load]
+ [/h1 (11/25/2002)]
+]def
+2 SetHeaderLines
+216 BeginPage
+/f0 F
+false BG
+0.624 0.714 0.804 FG
+0.000 0.000 0.000 FG
+0.424 0.482 0.545 true BG
+(SlateGray4          ) S
+0.424 0.482 0.545 FG
+false BG
+(  SlateGray4) S
+LHL
+0.000 0.000 0.000 FG
+0.792 0.882 1.000 true BG
+(LightSteelBlue1     ) S
+0.792 0.882 1.000 FG
+false BG
+(  LightSteelBlue1) S
+LHL
+0.000 0.000 0.000 FG
+0.737 0.824 0.933 true BG
+(LightSteelBlue2     ) S
+0.737 0.824 0.933 FG
+false BG
+(  LightSteelBlue2) S
+LHL
+0.000 0.000 0.000 FG
+0.635 0.710 0.804 true BG
+(LightSteelBlue3     ) S
+0.635 0.710 0.804 FG
+false BG
+(  LightSteelBlue3) S
+LHL
+0.000 0.000 0.000 FG
+0.431 0.482 0.545 true BG
+(LightSteelBlue4     ) S
+0.431 0.482 0.545 FG
+false BG
+(  LightSteelBlue4) S
+LHL
+0.000 0.000 0.000 FG
+0.749 0.937 1.000 true BG
+(LightBlue1          ) S
+0.749 0.937 1.000 FG
+false BG
+(  LightBlue1) S
+LHL
+0.000 0.000 0.000 FG
+0.698 0.875 0.933 true BG
+(LightBlue2          ) S
+0.698 0.875 0.933 FG
+false BG
+(  LightBlue2) S
+LHL
+0.000 0.000 0.000 FG
+0.604 0.753 0.804 true BG
+(LightBlue3          ) S
+0.604 0.753 0.804 FG
+false BG
+(  LightBlue3) S
+LHL
+0.000 0.000 0.000 FG
+0.408 0.514 0.545 true BG
+(LightBlue4          ) S
+0.408 0.514 0.545 FG
+false BG
+(  LightBlue4) S
+LHL
+0.000 0.000 0.000 FG
+0.878 1.000 1.000 true BG
+(LightCyan1          ) S
+0.878 1.000 1.000 FG
+false BG
+(  LightCyan1) S
+LHL
+0.000 0.000 0.000 FG
+0.820 0.933 0.933 true BG
+(LightCyan2          ) S
+0.820 0.933 0.933 FG
+false BG
+(  LightCyan2) S
+LHL
+0.000 0.000 0.000 FG
+0.706 0.804 0.804 true BG
+(LightCyan3          ) S
+0.706 0.804 0.804 FG
+false BG
+(  LightCyan3) S
+LHL
+0.000 0.000 0.000 FG
+0.478 0.545 0.545 true BG
+(LightCyan4          ) S
+0.478 0.545 0.545 FG
+false BG
+(  LightCyan4) S
+LHL
+0.000 0.000 0.000 FG
+0.733 1.000 1.000 true BG
+(PaleTurquoise1      ) S
+0.733 1.000 1.000 FG
+false BG
+(  PaleTurquoise1) S
+LHL
+0.000 0.000 0.000 FG
+0.682 0.933 0.933 true BG
+(PaleTurquoise2      ) S
+0.682 0.933 0.933 FG
+false BG
+(  PaleTurquoise2) S
+LHL
+0.000 0.000 0.000 FG
+0.588 0.804 0.804 true BG
+(PaleTurquoise3      ) S
+0.588 0.804 0.804 FG
+false BG
+(  PaleTurquoise3) S
+LHL
+0.000 0.000 0.000 FG
+0.400 0.545 0.545 true BG
+(PaleTurquoise4      ) S
+0.400 0.545 0.545 FG
+false BG
+(  PaleTurquoise4) S
+LHL
+0.000 0.000 0.000 FG
+0.596 0.961 1.000 true BG
+(CadetBlue1          ) S
+0.596 0.961 1.000 FG
+false BG
+(  CadetBlue1) S
+LHL
+0.000 0.000 0.000 FG
+0.557 0.898 0.933 true BG
+(CadetBlue2          ) S
+0.557 0.898 0.933 FG
+false BG
+(  CadetBlue2) S
+LHL
+0.000 0.000 0.000 FG
+0.478 0.773 0.804 true BG
+(CadetBlue3          ) S
+0.478 0.773 0.804 FG
+false BG
+(  CadetBlue3) S
+LHL
+0.000 0.000 0.000 FG
+0.325 0.525 0.545 true BG
+(CadetBlue4          ) S
+0.325 0.525 0.545 FG
+false BG
+(  CadetBlue4) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.961 1.000 true BG
+(turquoise1          ) S
+0.000 0.961 1.000 FG
+false BG
+(  turquoise1) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.898 0.933 true BG
+(turquoise2          ) S
+0.000 0.898 0.933 FG
+false BG
+(  turquoise2) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.773 0.804 true BG
+(turquoise3          ) S
+0.000 0.773 0.804 FG
+false BG
+(  turquoise3) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.525 0.545 true BG
+(turquoise4          ) S
+0.000 0.525 0.545 FG
+false BG
+(  turquoise4) S
+LHL
+0.000 0.000 0.000 FG
+0.000 1.000 1.000 true BG
+(cyan1               ) S
+0.000 1.000 1.000 FG
+false BG
+(  cyan1) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.933 0.933 true BG
+(cyan2               ) S
+0.000 0.933 0.933 FG
+false BG
+(  cyan2) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.804 0.804 true BG
+(cyan3               ) S
+0.000 0.804 0.804 FG
+false BG
+(  cyan3) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.545 0.545 true BG
+(cyan4               ) S
+0.000 0.545 0.545 FG
+false BG
+(  cyan4) S
+LHL
+0.000 0.000 0.000 FG
+0.592 1.000 1.000 true BG
+(DarkSlateGray1      ) S
+0.592 1.000 1.000 FG
+false BG
+(  DarkSlateGray1) S
+LHL
+0.000 0.000 0.000 FG
+0.553 0.933 0.933 true BG
+(DarkSlateGray2      ) S
+0.553 0.933 0.933 FG
+false BG
+(  DarkSlateGray2) S
+LHL
+0.000 0.000 0.000 FG
+0.475 0.804 0.804 true BG
+(DarkSlateGray3      ) S
+0.475 0.804 0.804 FG
+false BG
+(  DarkSlateGray3) S
+LHL
+0.000 0.000 0.000 FG
+0.322 0.545 0.545 true BG
+(DarkSlateGray4      ) S
+0.322 0.545 0.545 FG
+false BG
+(  DarkSlateGray4) S
+LHL
+0.000 0.000 0.000 FG
+0.498 1.000 0.831 true BG
+(aquamarine1         ) S
+0.498 1.000 0.831 FG
+false BG
+(  aquamarine1) S
+LHL
+0.000 0.000 0.000 FG
+0.463 0.933 0.776 true BG
+(aquamarine2         ) S
+0.463 0.933 0.776 FG
+false BG
+(  aquamarine2) S
+LHL
+0.000 0.000 0.000 FG
+0.400 0.804 0.667 true BG
+(aquamarine3         ) S
+0.400 0.804 0.667 FG
+false BG
+(  aquamarine3) S
+LHL
+0.000 0.000 0.000 FG
+0.271 0.545 0.455 true BG
+(aquamarine4         ) S
+0.271 0.545 0.455 FG
+false BG
+(  aquamarine4) S
+LHL
+0.000 0.000 0.000 FG
+0.757 1.000 0.757 true BG
+(DarkSeaGreen1       ) S
+0.757 1.000 0.757 FG
+false BG
+(  DarkSeaGreen1) S
+LHL
+0.000 0.000 0.000 FG
+0.706 0.933 0.706 true BG
+(DarkSeaGreen2       ) S
+0.706 0.933 0.706 FG
+false BG
+(  DarkSeaGreen2) S
+LHL
+0.000 0.000 0.000 FG
+0.608 0.804 0.608 true BG
+(DarkSeaGreen3       ) S
+0.608 0.804 0.608 FG
+false BG
+(  DarkSeaGreen3) S
+LHL
+0.000 0.000 0.000 FG
+0.412 0.545 0.412 true BG
+(DarkSeaGreen4       ) S
+0.412 0.545 0.412 FG
+false BG
+(  DarkSeaGreen4) S
+LHL
+0.000 0.000 0.000 FG
+0.329 1.000 0.624 true BG
+(SeaGreen1           ) S
+0.329 1.000 0.624 FG
+false BG
+(  SeaGreen1) S
+LHL
+0.000 0.000 0.000 FG
+0.306 0.933 0.580 true BG
+(SeaGreen2           ) S
+0.306 0.933 0.580 FG
+false BG
+(  SeaGreen2) S
+LHL
+0.000 0.000 0.000 FG
+0.263 0.804 0.502 true BG
+(SeaGreen3           ) S
+0.263 0.804 0.502 FG
+false BG
+(  SeaGreen3) S
+LHL
+0.000 0.000 0.000 FG
+0.180 0.545 0.341 true BG
+(SeaGreen4           ) S
+0.180 0.545 0.341 FG
+false BG
+(  SeaGreen4) S
+LHL
+0.000 0.000 0.000 FG
+0.604 1.000 0.604 true BG
+(PaleGreen1          ) S
+0.604 1.000 0.604 FG
+false BG
+(  PaleGreen1) S
+LHL
+0.000 0.000 0.000 FG
+0.565 0.933 0.565 true BG
+(PaleGreen2          ) S
+0.565 0.933 0.565 FG
+false BG
+(  PaleGreen2) S
+LHL
+0.000 0.000 0.000 FG
+0.486 0.804 0.486 true BG
+(PaleGreen3          ) S
+0.486 0.804 0.486 FG
+false BG
+(  PaleGreen3) S
+LHL
+0.000 0.000 0.000 FG
+0.329 0.545 0.329 true BG
+(PaleGreen4          ) S
+0.329 0.545 0.329 FG
+false BG
+(  PaleGreen4) S
+LHL
+0.000 0.000 0.000 FG
+0.000 1.000 0.498 true BG
+(SpringGreen1        ) S
+0.000 1.000 0.498 FG
+false BG
+(  SpringGreen1) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.933 0.463 true BG
+(SpringGreen2        ) S
+0.000 0.933 0.463 FG
+false BG
+(  SpringGreen2) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.804 0.400 true BG
+(SpringGreen3        ) S
+0.000 0.804 0.400 FG
+false BG
+(  SpringGreen3) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.545 0.271 true BG
+(SpringGreen4        ) S
+0.000 0.545 0.271 FG
+false BG
+(  SpringGreen4) S
+LHL
+0.000 0.000 0.000 FG
+0.000 1.000 0.000 true BG
+(green1              ) S
+0.000 1.000 0.000 FG
+false BG
+(  green1) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.933 0.000 true BG
+(green2              ) S
+0.000 0.933 0.000 FG
+false BG
+(  green2) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.804 0.000 true BG
+(green3              ) S
+0.000 0.804 0.000 FG
+false BG
+(  green3) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.545 0.000 true BG
+(green4              ) S
+0.000 0.545 0.000 FG
+false BG
+(  green4) S
+LHL
+0.000 0.000 0.000 FG
+0.498 1.000 0.000 true BG
+(chartreuse1         ) S
+0.498 1.000 0.000 FG
+false BG
+(  chartreuse1) S
+LHL
+0.000 0.000 0.000 FG
+0.463 0.933 0.000 true BG
+(chartreuse2         ) S
+0.463 0.933 0.000 FG
+false BG
+(  chartreuse2) S
+LHL
+0.000 0.000 0.000 FG
+0.400 0.804 0.000 true BG
+(chartreuse3         ) S
+0.400 0.804 0.000 FG
+false BG
+(  chartreuse3) S
+LHL
+0.000 0.000 0.000 FG
+0.271 0.545 0.000 true BG
+(chartreuse4         ) S
+0.271 0.545 0.000 FG
+false BG
+(  chartreuse4) S
+LHL
+0.000 0.000 0.000 FG
+0.753 1.000 0.243 true BG
+(OliveDrab1          ) S
+0.753 1.000 0.243 FG
+false BG
+(  OliveDrab1) S
+LHL
+0.000 0.000 0.000 FG
+0.702 0.933 0.227 true BG
+(OliveDrab2          ) S
+0.702 0.933 0.227 FG
+false BG
+(  OliveDrab2) S
+LHL
+0.000 0.000 0.000 FG
+0.604 0.804 0.196 true BG
+(OliveDrab3          ) S
+0.604 0.804 0.196 FG
+false BG
+(  OliveDrab3) S
+LHL
+0.000 0.000 0.000 FG
+0.412 0.545 0.133 true BG
+(OliveDrab4          ) S
+0.412 0.545 0.133 FG
+false BG
+(  OliveDrab4) S
+LHL
+0.000 0.000 0.000 FG
+0.792 1.000 0.439 true BG
+(DarkOliveGreen1     ) S
+0.792 1.000 0.439 FG
+false BG
+(  DarkOliveGreen1) S
+LHL
+0.000 0.000 0.000 FG
+0.737 0.933 0.408 true BG
+(DarkOliveGreen2     ) S
+0.737 0.933 0.408 FG
+false BG
+(  DarkOliveGreen2) S
+LHL
+0.000 0.000 0.000 FG
+0.635 0.804 0.353 true BG
+(DarkOliveGreen3     ) S
+0.635 0.804 0.353 FG
+false BG
+(  DarkOliveGreen3) S
+LHL
+0.000 0.000 0.000 FG
+0.431 0.545 0.239 true BG
+(DarkOliveGreen4     ) S
+0.431 0.545 0.239 FG
+false BG
+(  DarkOliveGreen4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.965 0.561 true BG
+(khaki1              ) S
+1.000 0.965 0.561 FG
+false BG
+(  khaki1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.902 0.522 true BG
+(khaki2              ) S
+0.933 0.902 0.522 FG
+false BG
+(  khaki2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.776 0.451 true BG
+(khaki3              ) S
+0.804 0.776 0.451 FG
+false BG
+(  khaki3) S
+EndPage
+EndDSCPage
+EndSheet
+
+%%Page: 5 5
+/Lines 548 def
+/PageCount 8 def
+1 BeginSheet
+BeginDSCPage
+/LineNumber 289 def
+/PageNumber 5 def
+/HeaderLinesLeft[
+ [/h0 (*Colors*)]
+ [/h1 ()]
+]def
+/HeaderLinesRight[
+ [/h0 /pagenumberstring load]
+ [/h1 (11/25/2002)]
+]def
+2 SetHeaderLines
+288 BeginPage
+/f0 F
+false BG
+0.804 0.776 0.451 FG
+0.000 0.000 0.000 FG
+0.545 0.525 0.306 true BG
+(khaki4              ) S
+0.545 0.525 0.306 FG
+false BG
+(  khaki4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.925 0.545 true BG
+(LightGoldenrod1     ) S
+1.000 0.925 0.545 FG
+false BG
+(  LightGoldenrod1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.863 0.510 true BG
+(LightGoldenrod2     ) S
+0.933 0.863 0.510 FG
+false BG
+(  LightGoldenrod2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.745 0.439 true BG
+(LightGoldenrod3     ) S
+0.804 0.745 0.439 FG
+false BG
+(  LightGoldenrod3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.506 0.298 true BG
+(LightGoldenrod4     ) S
+0.545 0.506 0.298 FG
+false BG
+(  LightGoldenrod4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 1.000 0.878 true BG
+(LightYellow1        ) S
+1.000 1.000 0.878 FG
+false BG
+(  LightYellow1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.933 0.820 true BG
+(LightYellow2        ) S
+0.933 0.933 0.820 FG
+false BG
+(  LightYellow2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.804 0.706 true BG
+(LightYellow3        ) S
+0.804 0.804 0.706 FG
+false BG
+(  LightYellow3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.545 0.478 true BG
+(LightYellow4        ) S
+0.545 0.545 0.478 FG
+false BG
+(  LightYellow4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 1.000 0.000 true BG
+(yellow1             ) S
+1.000 1.000 0.000 FG
+false BG
+(  yellow1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.933 0.000 true BG
+(yellow2             ) S
+0.933 0.933 0.000 FG
+false BG
+(  yellow2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.804 0.000 true BG
+(yellow3             ) S
+0.804 0.804 0.000 FG
+false BG
+(  yellow3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.545 0.000 true BG
+(yellow4             ) S
+0.545 0.545 0.000 FG
+false BG
+(  yellow4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.843 0.000 true BG
+(gold1               ) S
+1.000 0.843 0.000 FG
+false BG
+(  gold1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.788 0.000 true BG
+(gold2               ) S
+0.933 0.788 0.000 FG
+false BG
+(  gold2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.678 0.000 true BG
+(gold3               ) S
+0.804 0.678 0.000 FG
+false BG
+(  gold3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.459 0.000 true BG
+(gold4               ) S
+0.545 0.459 0.000 FG
+false BG
+(  gold4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.757 0.145 true BG
+(goldenrod1          ) S
+1.000 0.757 0.145 FG
+false BG
+(  goldenrod1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.706 0.133 true BG
+(goldenrod2          ) S
+0.933 0.706 0.133 FG
+false BG
+(  goldenrod2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.608 0.114 true BG
+(goldenrod3          ) S
+0.804 0.608 0.114 FG
+false BG
+(  goldenrod3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.412 0.078 true BG
+(goldenrod4          ) S
+0.545 0.412 0.078 FG
+false BG
+(  goldenrod4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.725 0.059 true BG
+(DarkGoldenrod1      ) S
+1.000 0.725 0.059 FG
+false BG
+(  DarkGoldenrod1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.678 0.055 true BG
+(DarkGoldenrod2      ) S
+0.933 0.678 0.055 FG
+false BG
+(  DarkGoldenrod2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.584 0.047 true BG
+(DarkGoldenrod3      ) S
+0.804 0.584 0.047 FG
+false BG
+(  DarkGoldenrod3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.396 0.031 true BG
+(DarkGoldenrod4      ) S
+0.545 0.396 0.031 FG
+false BG
+(  DarkGoldenrod4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.757 0.757 true BG
+(RosyBrown1          ) S
+1.000 0.757 0.757 FG
+false BG
+(  RosyBrown1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.706 0.706 true BG
+(RosyBrown2          ) S
+0.933 0.706 0.706 FG
+false BG
+(  RosyBrown2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.608 0.608 true BG
+(RosyBrown3          ) S
+0.804 0.608 0.608 FG
+false BG
+(  RosyBrown3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.412 0.412 true BG
+(RosyBrown4          ) S
+0.545 0.412 0.412 FG
+false BG
+(  RosyBrown4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.416 0.416 true BG
+(IndianRed1          ) S
+1.000 0.416 0.416 FG
+false BG
+(  IndianRed1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.388 0.388 true BG
+(IndianRed2          ) S
+0.933 0.388 0.388 FG
+false BG
+(  IndianRed2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.333 0.333 true BG
+(IndianRed3          ) S
+0.804 0.333 0.333 FG
+false BG
+(  IndianRed3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.227 0.227 true BG
+(IndianRed4          ) S
+0.545 0.227 0.227 FG
+false BG
+(  IndianRed4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.510 0.278 true BG
+(sienna1             ) S
+1.000 0.510 0.278 FG
+false BG
+(  sienna1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.475 0.259 true BG
+(sienna2             ) S
+0.933 0.475 0.259 FG
+false BG
+(  sienna2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.408 0.224 true BG
+(sienna3             ) S
+0.804 0.408 0.224 FG
+false BG
+(  sienna3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.278 0.149 true BG
+(sienna4             ) S
+0.545 0.278 0.149 FG
+false BG
+(  sienna4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.827 0.608 true BG
+(burlywood1          ) S
+1.000 0.827 0.608 FG
+false BG
+(  burlywood1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.773 0.569 true BG
+(burlywood2          ) S
+0.933 0.773 0.569 FG
+false BG
+(  burlywood2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.667 0.490 true BG
+(burlywood3          ) S
+0.804 0.667 0.490 FG
+false BG
+(  burlywood3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.451 0.333 true BG
+(burlywood4          ) S
+0.545 0.451 0.333 FG
+false BG
+(  burlywood4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.906 0.729 true BG
+(wheat1              ) S
+1.000 0.906 0.729 FG
+false BG
+(  wheat1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.847 0.682 true BG
+(wheat2              ) S
+0.933 0.847 0.682 FG
+false BG
+(  wheat2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.729 0.588 true BG
+(wheat3              ) S
+0.804 0.729 0.588 FG
+false BG
+(  wheat3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.494 0.400 true BG
+(wheat4              ) S
+0.545 0.494 0.400 FG
+false BG
+(  wheat4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.647 0.310 true BG
+(tan1                ) S
+1.000 0.647 0.310 FG
+false BG
+(  tan1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.604 0.286 true BG
+(tan2                ) S
+0.933 0.604 0.286 FG
+false BG
+(  tan2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.522 0.247 true BG
+(tan3                ) S
+0.804 0.522 0.247 FG
+false BG
+(  tan3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.353 0.169 true BG
+(tan4                ) S
+0.545 0.353 0.169 FG
+false BG
+(  tan4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.498 0.141 true BG
+(chocolate1          ) S
+1.000 0.498 0.141 FG
+false BG
+(  chocolate1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.463 0.129 true BG
+(chocolate2          ) S
+0.933 0.463 0.129 FG
+false BG
+(  chocolate2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.400 0.114 true BG
+(chocolate3          ) S
+0.804 0.400 0.114 FG
+false BG
+(  chocolate3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.271 0.075 true BG
+(chocolate4          ) S
+0.545 0.271 0.075 FG
+false BG
+(  chocolate4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.188 0.188 true BG
+(firebrick1          ) S
+1.000 0.188 0.188 FG
+false BG
+(  firebrick1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.173 0.173 true BG
+(firebrick2          ) S
+0.933 0.173 0.173 FG
+false BG
+(  firebrick2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.149 0.149 true BG
+(firebrick3          ) S
+0.804 0.149 0.149 FG
+false BG
+(  firebrick3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.102 0.102 true BG
+(firebrick4          ) S
+0.545 0.102 0.102 FG
+false BG
+(  firebrick4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.251 0.251 true BG
+(brown1              ) S
+1.000 0.251 0.251 FG
+false BG
+(  brown1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.231 0.231 true BG
+(brown2              ) S
+0.933 0.231 0.231 FG
+false BG
+(  brown2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.200 0.200 true BG
+(brown3              ) S
+0.804 0.200 0.200 FG
+false BG
+(  brown3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.137 0.137 true BG
+(brown4              ) S
+0.545 0.137 0.137 FG
+false BG
+(  brown4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.549 0.412 true BG
+(salmon1             ) S
+1.000 0.549 0.412 FG
+false BG
+(  salmon1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.510 0.384 true BG
+(salmon2             ) S
+0.933 0.510 0.384 FG
+false BG
+(  salmon2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.439 0.329 true BG
+(salmon3             ) S
+0.804 0.439 0.329 FG
+false BG
+(  salmon3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.298 0.224 true BG
+(salmon4             ) S
+0.545 0.298 0.224 FG
+false BG
+(  salmon4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.627 0.478 true BG
+(LightSalmon1        ) S
+1.000 0.627 0.478 FG
+false BG
+(  LightSalmon1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.584 0.447 true BG
+(LightSalmon2        ) S
+0.933 0.584 0.447 FG
+false BG
+(  LightSalmon2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.506 0.384 true BG
+(LightSalmon3        ) S
+0.804 0.506 0.384 FG
+false BG
+(  LightSalmon3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.341 0.259 true BG
+(LightSalmon4        ) S
+0.545 0.341 0.259 FG
+false BG
+(  LightSalmon4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.647 0.000 true BG
+(orange1             ) S
+1.000 0.647 0.000 FG
+false BG
+(  orange1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.604 0.000 true BG
+(orange2             ) S
+0.933 0.604 0.000 FG
+false BG
+(  orange2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.522 0.000 true BG
+(orange3             ) S
+0.804 0.522 0.000 FG
+false BG
+(  orange3) S
+EndPage
+EndDSCPage
+EndSheet
+
+%%Page: 6 6
+/Lines 548 def
+/PageCount 8 def
+1 BeginSheet
+BeginDSCPage
+/LineNumber 361 def
+/PageNumber 6 def
+/HeaderLinesLeft[
+ [/h0 (*Colors*)]
+ [/h1 ()]
+]def
+/HeaderLinesRight[
+ [/h0 /pagenumberstring load]
+ [/h1 (11/25/2002)]
+]def
+2 SetHeaderLines
+360 BeginPage
+/f0 F
+false BG
+0.804 0.522 0.000 FG
+0.000 0.000 0.000 FG
+0.545 0.353 0.000 true BG
+(orange4             ) S
+0.545 0.353 0.000 FG
+false BG
+(  orange4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.498 0.000 true BG
+(DarkOrange1         ) S
+1.000 0.498 0.000 FG
+false BG
+(  DarkOrange1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.463 0.000 true BG
+(DarkOrange2         ) S
+0.933 0.463 0.000 FG
+false BG
+(  DarkOrange2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.400 0.000 true BG
+(DarkOrange3         ) S
+0.804 0.400 0.000 FG
+false BG
+(  DarkOrange3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.271 0.000 true BG
+(DarkOrange4         ) S
+0.545 0.271 0.000 FG
+false BG
+(  DarkOrange4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.447 0.337 true BG
+(coral1              ) S
+1.000 0.447 0.337 FG
+false BG
+(  coral1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.416 0.314 true BG
+(coral2              ) S
+0.933 0.416 0.314 FG
+false BG
+(  coral2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.357 0.271 true BG
+(coral3              ) S
+0.804 0.357 0.271 FG
+false BG
+(  coral3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.243 0.184 true BG
+(coral4              ) S
+0.545 0.243 0.184 FG
+false BG
+(  coral4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.388 0.278 true BG
+(tomato1             ) S
+1.000 0.388 0.278 FG
+false BG
+(  tomato1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.361 0.259 true BG
+(tomato2             ) S
+0.933 0.361 0.259 FG
+false BG
+(  tomato2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.310 0.224 true BG
+(tomato3             ) S
+0.804 0.310 0.224 FG
+false BG
+(  tomato3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.212 0.149 true BG
+(tomato4             ) S
+0.545 0.212 0.149 FG
+false BG
+(  tomato4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.271 0.000 true BG
+(OrangeRed1          ) S
+1.000 0.271 0.000 FG
+false BG
+(  OrangeRed1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.251 0.000 true BG
+(OrangeRed2          ) S
+0.933 0.251 0.000 FG
+false BG
+(  OrangeRed2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.216 0.000 true BG
+(OrangeRed3          ) S
+0.804 0.216 0.000 FG
+false BG
+(  OrangeRed3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.145 0.000 true BG
+(OrangeRed4          ) S
+0.545 0.145 0.000 FG
+false BG
+(  OrangeRed4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.000 0.000 true BG
+(red1                ) S
+1.000 0.000 0.000 FG
+false BG
+(  red1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.000 0.000 true BG
+(red2                ) S
+0.933 0.000 0.000 FG
+false BG
+(  red2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.000 0.000 true BG
+(red3                ) S
+0.804 0.000 0.000 FG
+false BG
+(  red3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.000 0.000 true BG
+(red4                ) S
+0.545 0.000 0.000 FG
+false BG
+(  red4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.078 0.576 true BG
+(DeepPink1           ) S
+1.000 0.078 0.576 FG
+false BG
+(  DeepPink1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.071 0.537 true BG
+(DeepPink2           ) S
+0.933 0.071 0.537 FG
+false BG
+(  DeepPink2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.063 0.463 true BG
+(DeepPink3           ) S
+0.804 0.063 0.463 FG
+false BG
+(  DeepPink3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.039 0.314 true BG
+(DeepPink4           ) S
+0.545 0.039 0.314 FG
+false BG
+(  DeepPink4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.431 0.706 true BG
+(HotPink1            ) S
+1.000 0.431 0.706 FG
+false BG
+(  HotPink1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.416 0.655 true BG
+(HotPink2            ) S
+0.933 0.416 0.655 FG
+false BG
+(  HotPink2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.376 0.565 true BG
+(HotPink3            ) S
+0.804 0.376 0.565 FG
+false BG
+(  HotPink3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.227 0.384 true BG
+(HotPink4            ) S
+0.545 0.227 0.384 FG
+false BG
+(  HotPink4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.710 0.773 true BG
+(pink1               ) S
+1.000 0.710 0.773 FG
+false BG
+(  pink1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.663 0.722 true BG
+(pink2               ) S
+0.933 0.663 0.722 FG
+false BG
+(  pink2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.569 0.620 true BG
+(pink3               ) S
+0.804 0.569 0.620 FG
+false BG
+(  pink3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.388 0.424 true BG
+(pink4               ) S
+0.545 0.388 0.424 FG
+false BG
+(  pink4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.682 0.725 true BG
+(LightPink1          ) S
+1.000 0.682 0.725 FG
+false BG
+(  LightPink1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.635 0.678 true BG
+(LightPink2          ) S
+0.933 0.635 0.678 FG
+false BG
+(  LightPink2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.549 0.584 true BG
+(LightPink3          ) S
+0.804 0.549 0.584 FG
+false BG
+(  LightPink3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.373 0.396 true BG
+(LightPink4          ) S
+0.545 0.373 0.396 FG
+false BG
+(  LightPink4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.510 0.671 true BG
+(PaleVioletRed1      ) S
+1.000 0.510 0.671 FG
+false BG
+(  PaleVioletRed1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.475 0.624 true BG
+(PaleVioletRed2      ) S
+0.933 0.475 0.624 FG
+false BG
+(  PaleVioletRed2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.408 0.537 true BG
+(PaleVioletRed3      ) S
+0.804 0.408 0.537 FG
+false BG
+(  PaleVioletRed3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.278 0.365 true BG
+(PaleVioletRed4      ) S
+0.545 0.278 0.365 FG
+false BG
+(  PaleVioletRed4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.204 0.702 true BG
+(maroon1             ) S
+1.000 0.204 0.702 FG
+false BG
+(  maroon1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.188 0.655 true BG
+(maroon2             ) S
+0.933 0.188 0.655 FG
+false BG
+(  maroon2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.161 0.565 true BG
+(maroon3             ) S
+0.804 0.161 0.565 FG
+false BG
+(  maroon3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.110 0.384 true BG
+(maroon4             ) S
+0.545 0.110 0.384 FG
+false BG
+(  maroon4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.243 0.588 true BG
+(VioletRed1          ) S
+1.000 0.243 0.588 FG
+false BG
+(  VioletRed1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.227 0.549 true BG
+(VioletRed2          ) S
+0.933 0.227 0.549 FG
+false BG
+(  VioletRed2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.196 0.471 true BG
+(VioletRed3          ) S
+0.804 0.196 0.471 FG
+false BG
+(  VioletRed3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.133 0.322 true BG
+(VioletRed4          ) S
+0.545 0.133 0.322 FG
+false BG
+(  VioletRed4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.000 1.000 true BG
+(magenta1            ) S
+1.000 0.000 1.000 FG
+false BG
+(  magenta1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.000 0.933 true BG
+(magenta2            ) S
+0.933 0.000 0.933 FG
+false BG
+(  magenta2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.000 0.804 true BG
+(magenta3            ) S
+0.804 0.000 0.804 FG
+false BG
+(  magenta3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.000 0.545 true BG
+(magenta4            ) S
+0.545 0.000 0.545 FG
+false BG
+(  magenta4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.514 0.980 true BG
+(orchid1             ) S
+1.000 0.514 0.980 FG
+false BG
+(  orchid1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.478 0.914 true BG
+(orchid2             ) S
+0.933 0.478 0.914 FG
+false BG
+(  orchid2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.412 0.788 true BG
+(orchid3             ) S
+0.804 0.412 0.788 FG
+false BG
+(  orchid3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.278 0.537 true BG
+(orchid4             ) S
+0.545 0.278 0.537 FG
+false BG
+(  orchid4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.733 1.000 true BG
+(plum1               ) S
+1.000 0.733 1.000 FG
+false BG
+(  plum1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.682 0.933 true BG
+(plum2               ) S
+0.933 0.682 0.933 FG
+false BG
+(  plum2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.588 0.804 true BG
+(plum3               ) S
+0.804 0.588 0.804 FG
+false BG
+(  plum3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.400 0.545 true BG
+(plum4               ) S
+0.545 0.400 0.545 FG
+false BG
+(  plum4) S
+LHL
+0.000 0.000 0.000 FG
+0.878 0.400 1.000 true BG
+(MediumOrchid1       ) S
+0.878 0.400 1.000 FG
+false BG
+(  MediumOrchid1) S
+LHL
+0.000 0.000 0.000 FG
+0.820 0.373 0.933 true BG
+(MediumOrchid2       ) S
+0.820 0.373 0.933 FG
+false BG
+(  MediumOrchid2) S
+LHL
+0.000 0.000 0.000 FG
+0.706 0.322 0.804 true BG
+(MediumOrchid3       ) S
+0.706 0.322 0.804 FG
+false BG
+(  MediumOrchid3) S
+LHL
+0.000 0.000 0.000 FG
+0.478 0.216 0.545 true BG
+(MediumOrchid4       ) S
+0.478 0.216 0.545 FG
+false BG
+(  MediumOrchid4) S
+LHL
+0.000 0.000 0.000 FG
+0.749 0.243 1.000 true BG
+(DarkOrchid1         ) S
+0.749 0.243 1.000 FG
+false BG
+(  DarkOrchid1) S
+LHL
+0.000 0.000 0.000 FG
+0.698 0.227 0.933 true BG
+(DarkOrchid2         ) S
+0.698 0.227 0.933 FG
+false BG
+(  DarkOrchid2) S
+LHL
+0.000 0.000 0.000 FG
+0.604 0.196 0.804 true BG
+(DarkOrchid3         ) S
+0.604 0.196 0.804 FG
+false BG
+(  DarkOrchid3) S
+LHL
+0.000 0.000 0.000 FG
+0.408 0.133 0.545 true BG
+(DarkOrchid4         ) S
+0.408 0.133 0.545 FG
+false BG
+(  DarkOrchid4) S
+LHL
+0.000 0.000 0.000 FG
+0.608 0.188 1.000 true BG
+(purple1             ) S
+0.608 0.188 1.000 FG
+false BG
+(  purple1) S
+LHL
+0.000 0.000 0.000 FG
+0.569 0.173 0.933 true BG
+(purple2             ) S
+0.569 0.173 0.933 FG
+false BG
+(  purple2) S
+LHL
+0.000 0.000 0.000 FG
+0.490 0.149 0.804 true BG
+(purple3             ) S
+0.490 0.149 0.804 FG
+false BG
+(  purple3) S
+EndPage
+EndDSCPage
+EndSheet
+
+%%Page: 7 7
+/Lines 548 def
+/PageCount 8 def
+1 BeginSheet
+BeginDSCPage
+/LineNumber 433 def
+/PageNumber 7 def
+/HeaderLinesLeft[
+ [/h0 (*Colors*)]
+ [/h1 ()]
+]def
+/HeaderLinesRight[
+ [/h0 /pagenumberstring load]
+ [/h1 (11/25/2002)]
+]def
+2 SetHeaderLines
+432 BeginPage
+/f0 F
+false BG
+0.490 0.149 0.804 FG
+0.000 0.000 0.000 FG
+0.333 0.102 0.545 true BG
+(purple4             ) S
+0.333 0.102 0.545 FG
+false BG
+(  purple4) S
+LHL
+0.000 0.000 0.000 FG
+0.671 0.510 1.000 true BG
+(MediumPurple1       ) S
+0.671 0.510 1.000 FG
+false BG
+(  MediumPurple1) S
+LHL
+0.000 0.000 0.000 FG
+0.624 0.475 0.933 true BG
+(MediumPurple2       ) S
+0.624 0.475 0.933 FG
+false BG
+(  MediumPurple2) S
+LHL
+0.000 0.000 0.000 FG
+0.537 0.408 0.804 true BG
+(MediumPurple3       ) S
+0.537 0.408 0.804 FG
+false BG
+(  MediumPurple3) S
+LHL
+0.000 0.000 0.000 FG
+0.365 0.278 0.545 true BG
+(MediumPurple4       ) S
+0.365 0.278 0.545 FG
+false BG
+(  MediumPurple4) S
+LHL
+0.000 0.000 0.000 FG
+1.000 0.882 1.000 true BG
+(thistle1            ) S
+1.000 0.882 1.000 FG
+false BG
+(  thistle1) S
+LHL
+0.000 0.000 0.000 FG
+0.933 0.824 0.933 true BG
+(thistle2            ) S
+0.933 0.824 0.933 FG
+false BG
+(  thistle2) S
+LHL
+0.000 0.000 0.000 FG
+0.804 0.710 0.804 true BG
+(thistle3            ) S
+0.804 0.710 0.804 FG
+false BG
+(  thistle3) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.482 0.545 true BG
+(thistle4            ) S
+0.545 0.482 0.545 FG
+false BG
+(  thistle4) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.000 0.000 true BG
+(gray0               ) S
+false BG
+(  gray0) S
+LHL
+0.012 0.012 0.012 true BG
+(gray1               ) S
+0.012 0.012 0.012 FG
+false BG
+(  gray1) S
+LHL
+0.000 0.000 0.000 FG
+0.020 0.020 0.020 true BG
+(gray2               ) S
+0.020 0.020 0.020 FG
+false BG
+(  gray2) S
+LHL
+0.000 0.000 0.000 FG
+0.031 0.031 0.031 true BG
+(gray3               ) S
+0.031 0.031 0.031 FG
+false BG
+(  gray3) S
+LHL
+0.000 0.000 0.000 FG
+0.039 0.039 0.039 true BG
+(gray4               ) S
+0.039 0.039 0.039 FG
+false BG
+(  gray4) S
+LHL
+0.000 0.000 0.000 FG
+0.051 0.051 0.051 true BG
+(gray5               ) S
+0.051 0.051 0.051 FG
+false BG
+(  gray5) S
+LHL
+0.000 0.000 0.000 FG
+0.059 0.059 0.059 true BG
+(gray6               ) S
+0.059 0.059 0.059 FG
+false BG
+(  gray6) S
+LHL
+0.000 0.000 0.000 FG
+0.071 0.071 0.071 true BG
+(gray7               ) S
+0.071 0.071 0.071 FG
+false BG
+(  gray7) S
+LHL
+0.000 0.000 0.000 FG
+0.078 0.078 0.078 true BG
+(gray8               ) S
+0.078 0.078 0.078 FG
+false BG
+(  gray8) S
+LHL
+0.000 0.000 0.000 FG
+0.090 0.090 0.090 true BG
+(gray9               ) S
+0.090 0.090 0.090 FG
+false BG
+(  gray9) S
+LHL
+0.000 0.000 0.000 FG
+0.102 0.102 0.102 true BG
+(gray10              ) S
+0.102 0.102 0.102 FG
+false BG
+(  gray10) S
+LHL
+0.000 0.000 0.000 FG
+0.110 0.110 0.110 true BG
+(gray11              ) S
+0.110 0.110 0.110 FG
+false BG
+(  gray11) S
+LHL
+0.000 0.000 0.000 FG
+0.122 0.122 0.122 true BG
+(gray12              ) S
+0.122 0.122 0.122 FG
+false BG
+(  gray12) S
+LHL
+0.000 0.000 0.000 FG
+0.129 0.129 0.129 true BG
+(gray13              ) S
+0.129 0.129 0.129 FG
+false BG
+(  gray13) S
+LHL
+0.000 0.000 0.000 FG
+0.141 0.141 0.141 true BG
+(gray14              ) S
+0.141 0.141 0.141 FG
+false BG
+(  gray14) S
+LHL
+0.000 0.000 0.000 FG
+0.149 0.149 0.149 true BG
+(gray15              ) S
+0.149 0.149 0.149 FG
+false BG
+(  gray15) S
+LHL
+0.000 0.000 0.000 FG
+0.161 0.161 0.161 true BG
+(gray16              ) S
+0.161 0.161 0.161 FG
+false BG
+(  gray16) S
+LHL
+0.000 0.000 0.000 FG
+0.169 0.169 0.169 true BG
+(gray17              ) S
+0.169 0.169 0.169 FG
+false BG
+(  gray17) S
+LHL
+0.000 0.000 0.000 FG
+0.180 0.180 0.180 true BG
+(gray18              ) S
+0.180 0.180 0.180 FG
+false BG
+(  gray18) S
+LHL
+0.000 0.000 0.000 FG
+0.188 0.188 0.188 true BG
+(gray19              ) S
+0.188 0.188 0.188 FG
+false BG
+(  gray19) S
+LHL
+0.000 0.000 0.000 FG
+0.200 0.200 0.200 true BG
+(gray20              ) S
+0.200 0.200 0.200 FG
+false BG
+(  gray20) S
+LHL
+0.000 0.000 0.000 FG
+0.212 0.212 0.212 true BG
+(gray21              ) S
+0.212 0.212 0.212 FG
+false BG
+(  gray21) S
+LHL
+0.000 0.000 0.000 FG
+0.220 0.220 0.220 true BG
+(gray22              ) S
+0.220 0.220 0.220 FG
+false BG
+(  gray22) S
+LHL
+0.000 0.000 0.000 FG
+0.231 0.231 0.231 true BG
+(gray23              ) S
+0.231 0.231 0.231 FG
+false BG
+(  gray23) S
+LHL
+0.000 0.000 0.000 FG
+0.239 0.239 0.239 true BG
+(gray24              ) S
+0.239 0.239 0.239 FG
+false BG
+(  gray24) S
+LHL
+0.000 0.000 0.000 FG
+0.251 0.251 0.251 true BG
+(gray25              ) S
+0.251 0.251 0.251 FG
+false BG
+(  gray25) S
+LHL
+0.000 0.000 0.000 FG
+0.259 0.259 0.259 true BG
+(gray26              ) S
+0.259 0.259 0.259 FG
+false BG
+(  gray26) S
+LHL
+0.000 0.000 0.000 FG
+0.271 0.271 0.271 true BG
+(gray27              ) S
+0.271 0.271 0.271 FG
+false BG
+(  gray27) S
+LHL
+0.000 0.000 0.000 FG
+0.278 0.278 0.278 true BG
+(gray28              ) S
+0.278 0.278 0.278 FG
+false BG
+(  gray28) S
+LHL
+0.000 0.000 0.000 FG
+0.290 0.290 0.290 true BG
+(gray29              ) S
+0.290 0.290 0.290 FG
+false BG
+(  gray29) S
+LHL
+0.000 0.000 0.000 FG
+0.302 0.302 0.302 true BG
+(gray30              ) S
+0.302 0.302 0.302 FG
+false BG
+(  gray30) S
+LHL
+0.000 0.000 0.000 FG
+0.310 0.310 0.310 true BG
+(gray31              ) S
+0.310 0.310 0.310 FG
+false BG
+(  gray31) S
+LHL
+0.000 0.000 0.000 FG
+0.322 0.322 0.322 true BG
+(gray32              ) S
+0.322 0.322 0.322 FG
+false BG
+(  gray32) S
+LHL
+0.000 0.000 0.000 FG
+0.329 0.329 0.329 true BG
+(gray33              ) S
+0.329 0.329 0.329 FG
+false BG
+(  gray33) S
+LHL
+0.000 0.000 0.000 FG
+0.341 0.341 0.341 true BG
+(gray34              ) S
+0.341 0.341 0.341 FG
+false BG
+(  gray34) S
+LHL
+0.000 0.000 0.000 FG
+0.349 0.349 0.349 true BG
+(gray35              ) S
+0.349 0.349 0.349 FG
+false BG
+(  gray35) S
+LHL
+0.000 0.000 0.000 FG
+0.361 0.361 0.361 true BG
+(gray36              ) S
+0.361 0.361 0.361 FG
+false BG
+(  gray36) S
+LHL
+0.000 0.000 0.000 FG
+0.369 0.369 0.369 true BG
+(gray37              ) S
+0.369 0.369 0.369 FG
+false BG
+(  gray37) S
+LHL
+0.000 0.000 0.000 FG
+0.380 0.380 0.380 true BG
+(gray38              ) S
+0.380 0.380 0.380 FG
+false BG
+(  gray38) S
+LHL
+0.000 0.000 0.000 FG
+0.388 0.388 0.388 true BG
+(gray39              ) S
+0.388 0.388 0.388 FG
+false BG
+(  gray39) S
+LHL
+0.000 0.000 0.000 FG
+0.400 0.400 0.400 true BG
+(gray40              ) S
+0.400 0.400 0.400 FG
+false BG
+(  gray40) S
+LHL
+0.000 0.000 0.000 FG
+0.412 0.412 0.412 true BG
+(gray41              ) S
+0.412 0.412 0.412 FG
+false BG
+(  gray41) S
+LHL
+0.000 0.000 0.000 FG
+0.420 0.420 0.420 true BG
+(gray42              ) S
+0.420 0.420 0.420 FG
+false BG
+(  gray42) S
+LHL
+0.000 0.000 0.000 FG
+0.431 0.431 0.431 true BG
+(gray43              ) S
+0.431 0.431 0.431 FG
+false BG
+(  gray43) S
+LHL
+0.000 0.000 0.000 FG
+0.439 0.439 0.439 true BG
+(gray44              ) S
+0.439 0.439 0.439 FG
+false BG
+(  gray44) S
+LHL
+0.000 0.000 0.000 FG
+0.451 0.451 0.451 true BG
+(gray45              ) S
+0.451 0.451 0.451 FG
+false BG
+(  gray45) S
+LHL
+0.000 0.000 0.000 FG
+0.459 0.459 0.459 true BG
+(gray46              ) S
+0.459 0.459 0.459 FG
+false BG
+(  gray46) S
+LHL
+0.000 0.000 0.000 FG
+0.471 0.471 0.471 true BG
+(gray47              ) S
+0.471 0.471 0.471 FG
+false BG
+(  gray47) S
+LHL
+0.000 0.000 0.000 FG
+0.478 0.478 0.478 true BG
+(gray48              ) S
+0.478 0.478 0.478 FG
+false BG
+(  gray48) S
+LHL
+0.000 0.000 0.000 FG
+0.490 0.490 0.490 true BG
+(gray49              ) S
+0.490 0.490 0.490 FG
+false BG
+(  gray49) S
+LHL
+0.000 0.000 0.000 FG
+0.498 0.498 0.498 true BG
+(gray50              ) S
+0.498 0.498 0.498 FG
+false BG
+(  gray50) S
+LHL
+0.000 0.000 0.000 FG
+0.510 0.510 0.510 true BG
+(gray51              ) S
+0.510 0.510 0.510 FG
+false BG
+(  gray51) S
+LHL
+0.000 0.000 0.000 FG
+0.522 0.522 0.522 true BG
+(gray52              ) S
+0.522 0.522 0.522 FG
+false BG
+(  gray52) S
+LHL
+0.000 0.000 0.000 FG
+0.529 0.529 0.529 true BG
+(gray53              ) S
+0.529 0.529 0.529 FG
+false BG
+(  gray53) S
+LHL
+0.000 0.000 0.000 FG
+0.541 0.541 0.541 true BG
+(gray54              ) S
+0.541 0.541 0.541 FG
+false BG
+(  gray54) S
+LHL
+0.000 0.000 0.000 FG
+0.549 0.549 0.549 true BG
+(gray55              ) S
+0.549 0.549 0.549 FG
+false BG
+(  gray55) S
+LHL
+0.000 0.000 0.000 FG
+0.561 0.561 0.561 true BG
+(gray56              ) S
+0.561 0.561 0.561 FG
+false BG
+(  gray56) S
+LHL
+0.000 0.000 0.000 FG
+0.569 0.569 0.569 true BG
+(gray57              ) S
+0.569 0.569 0.569 FG
+false BG
+(  gray57) S
+LHL
+0.000 0.000 0.000 FG
+0.580 0.580 0.580 true BG
+(gray58              ) S
+0.580 0.580 0.580 FG
+false BG
+(  gray58) S
+LHL
+0.000 0.000 0.000 FG
+0.588 0.588 0.588 true BG
+(gray59              ) S
+0.588 0.588 0.588 FG
+false BG
+(  gray59) S
+LHL
+0.000 0.000 0.000 FG
+0.600 0.600 0.600 true BG
+(gray60              ) S
+0.600 0.600 0.600 FG
+false BG
+(  gray60) S
+LHL
+0.000 0.000 0.000 FG
+0.612 0.612 0.612 true BG
+(gray61              ) S
+0.612 0.612 0.612 FG
+false BG
+(  gray61) S
+LHL
+0.000 0.000 0.000 FG
+0.620 0.620 0.620 true BG
+(gray62              ) S
+0.620 0.620 0.620 FG
+false BG
+(  gray62) S
+EndPage
+EndDSCPage
+EndSheet
+
+%%Page: 8 8
+/Lines 548 def
+/PageCount 8 def
+1 BeginSheet
+BeginDSCPage
+/LineNumber 505 def
+/PageNumber 8 def
+/HeaderLinesLeft[
+ [/h0 (*Colors*)]
+ [/h1 ()]
+]def
+/HeaderLinesRight[
+ [/h0 /pagenumberstring load]
+ [/h1 (11/25/2002)]
+]def
+2 SetHeaderLines
+504 BeginPage
+/f0 F
+false BG
+0.620 0.620 0.620 FG
+0.000 0.000 0.000 FG
+0.631 0.631 0.631 true BG
+(gray63              ) S
+0.631 0.631 0.631 FG
+false BG
+(  gray63) S
+LHL
+0.000 0.000 0.000 FG
+0.639 0.639 0.639 true BG
+(gray64              ) S
+0.639 0.639 0.639 FG
+false BG
+(  gray64) S
+LHL
+0.000 0.000 0.000 FG
+0.651 0.651 0.651 true BG
+(gray65              ) S
+0.651 0.651 0.651 FG
+false BG
+(  gray65) S
+LHL
+0.000 0.000 0.000 FG
+0.659 0.659 0.659 true BG
+(gray66              ) S
+0.659 0.659 0.659 FG
+false BG
+(  gray66) S
+LHL
+0.000 0.000 0.000 FG
+0.671 0.671 0.671 true BG
+(gray67              ) S
+0.671 0.671 0.671 FG
+false BG
+(  gray67) S
+LHL
+0.000 0.000 0.000 FG
+0.678 0.678 0.678 true BG
+(gray68              ) S
+0.678 0.678 0.678 FG
+false BG
+(  gray68) S
+LHL
+0.000 0.000 0.000 FG
+0.690 0.690 0.690 true BG
+(gray69              ) S
+0.690 0.690 0.690 FG
+false BG
+(  gray69) S
+LHL
+0.000 0.000 0.000 FG
+0.702 0.702 0.702 true BG
+(gray70              ) S
+0.702 0.702 0.702 FG
+false BG
+(  gray70) S
+LHL
+0.000 0.000 0.000 FG
+0.710 0.710 0.710 true BG
+(gray71              ) S
+0.710 0.710 0.710 FG
+false BG
+(  gray71) S
+LHL
+0.000 0.000 0.000 FG
+0.722 0.722 0.722 true BG
+(gray72              ) S
+0.722 0.722 0.722 FG
+false BG
+(  gray72) S
+LHL
+0.000 0.000 0.000 FG
+0.729 0.729 0.729 true BG
+(gray73              ) S
+0.729 0.729 0.729 FG
+false BG
+(  gray73) S
+LHL
+0.000 0.000 0.000 FG
+0.741 0.741 0.741 true BG
+(gray74              ) S
+0.741 0.741 0.741 FG
+false BG
+(  gray74) S
+LHL
+0.000 0.000 0.000 FG
+0.749 0.749 0.749 true BG
+(gray75              ) S
+0.749 0.749 0.749 FG
+false BG
+(  gray75) S
+LHL
+0.000 0.000 0.000 FG
+0.761 0.761 0.761 true BG
+(gray76              ) S
+0.761 0.761 0.761 FG
+false BG
+(  gray76) S
+LHL
+0.000 0.000 0.000 FG
+0.769 0.769 0.769 true BG
+(gray77              ) S
+0.769 0.769 0.769 FG
+false BG
+(  gray77) S
+LHL
+0.000 0.000 0.000 FG
+0.780 0.780 0.780 true BG
+(gray78              ) S
+0.780 0.780 0.780 FG
+false BG
+(  gray78) S
+LHL
+0.000 0.000 0.000 FG
+0.788 0.788 0.788 true BG
+(gray79              ) S
+0.788 0.788 0.788 FG
+false BG
+(  gray79) S
+LHL
+0.000 0.000 0.000 FG
+0.800 0.800 0.800 true BG
+(gray80              ) S
+0.800 0.800 0.800 FG
+false BG
+(  gray80) S
+LHL
+0.000 0.000 0.000 FG
+0.812 0.812 0.812 true BG
+(gray81              ) S
+0.812 0.812 0.812 FG
+false BG
+(  gray81) S
+LHL
+0.000 0.000 0.000 FG
+0.820 0.820 0.820 true BG
+(gray82              ) S
+0.820 0.820 0.820 FG
+false BG
+(  gray82) S
+LHL
+0.000 0.000 0.000 FG
+0.831 0.831 0.831 true BG
+(gray83              ) S
+0.831 0.831 0.831 FG
+false BG
+(  gray83) S
+LHL
+0.000 0.000 0.000 FG
+0.839 0.839 0.839 true BG
+(gray84              ) S
+0.839 0.839 0.839 FG
+false BG
+(  gray84) S
+LHL
+0.000 0.000 0.000 FG
+0.851 0.851 0.851 true BG
+(gray85              ) S
+0.851 0.851 0.851 FG
+false BG
+(  gray85) S
+LHL
+0.000 0.000 0.000 FG
+0.859 0.859 0.859 true BG
+(gray86              ) S
+0.859 0.859 0.859 FG
+false BG
+(  gray86) S
+LHL
+0.000 0.000 0.000 FG
+0.871 0.871 0.871 true BG
+(gray87              ) S
+0.871 0.871 0.871 FG
+false BG
+(  gray87) S
+LHL
+0.000 0.000 0.000 FG
+0.878 0.878 0.878 true BG
+(gray88              ) S
+0.878 0.878 0.878 FG
+false BG
+(  gray88) S
+LHL
+0.000 0.000 0.000 FG
+0.890 0.890 0.890 true BG
+(gray89              ) S
+0.890 0.890 0.890 FG
+false BG
+(  gray89) S
+LHL
+0.000 0.000 0.000 FG
+0.898 0.898 0.898 true BG
+(gray90              ) S
+0.898 0.898 0.898 FG
+false BG
+(  gray90) S
+LHL
+0.000 0.000 0.000 FG
+0.910 0.910 0.910 true BG
+(gray91              ) S
+0.910 0.910 0.910 FG
+false BG
+(  gray91) S
+LHL
+0.000 0.000 0.000 FG
+0.922 0.922 0.922 true BG
+(gray92              ) S
+0.922 0.922 0.922 FG
+false BG
+(  gray92) S
+LHL
+0.000 0.000 0.000 FG
+0.929 0.929 0.929 true BG
+(gray93              ) S
+0.929 0.929 0.929 FG
+false BG
+(  gray93) S
+LHL
+0.000 0.000 0.000 FG
+0.941 0.941 0.941 true BG
+(gray94              ) S
+0.941 0.941 0.941 FG
+false BG
+(  gray94) S
+LHL
+0.000 0.000 0.000 FG
+0.949 0.949 0.949 true BG
+(gray95              ) S
+0.949 0.949 0.949 FG
+false BG
+(  gray95) S
+LHL
+0.000 0.000 0.000 FG
+0.961 0.961 0.961 true BG
+(gray96              ) S
+0.961 0.961 0.961 FG
+false BG
+(  gray96) S
+LHL
+0.000 0.000 0.000 FG
+0.969 0.969 0.969 true BG
+(gray97              ) S
+0.969 0.969 0.969 FG
+false BG
+(  gray97) S
+LHL
+0.000 0.000 0.000 FG
+0.980 0.980 0.980 true BG
+(gray98              ) S
+0.980 0.980 0.980 FG
+false BG
+(  gray98) S
+LHL
+0.000 0.000 0.000 FG
+0.988 0.988 0.988 true BG
+(gray99              ) S
+0.988 0.988 0.988 FG
+false BG
+(  gray99) S
+LHL
+0.000 0.000 0.000 FG
+1.000 1.000 1.000 true BG
+(gray100             ) S
+1.000 1.000 1.000 FG
+false BG
+(  gray100) S
+LHL
+0.000 0.000 0.000 FG
+0.663 0.663 0.663 true BG
+(dark grey           ) S
+0.663 0.663 0.663 FG
+false BG
+(  dark grey) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.000 0.545 true BG
+(dark blue           ) S
+0.000 0.000 0.545 FG
+false BG
+(  dark blue) S
+LHL
+0.000 0.000 0.000 FG
+0.000 0.545 0.545 true BG
+(dark cyan           ) S
+0.000 0.545 0.545 FG
+false BG
+(  dark cyan) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.000 0.545 true BG
+(dark magenta        ) S
+0.545 0.000 0.545 FG
+false BG
+(  dark magenta) S
+LHL
+0.000 0.000 0.000 FG
+0.545 0.000 0.000 true BG
+(dark red            ) S
+0.545 0.000 0.000 FG
+false BG
+(  dark red) S
+LHL
+0.000 0.000 0.000 FG
+0.565 0.933 0.565 true BG
+(light green         ) S
+0.565 0.933 0.565 FG
+false BG
+(  light green) S
+EndPage
+EndDSCPage
+EndSheet
+
+%%Trailer
+%%Pages: 8
+
+EndDoc
+
+%%EOF

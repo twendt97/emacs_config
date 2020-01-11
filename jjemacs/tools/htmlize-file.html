@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Created by htmlize-1.16 in css mode. -->
+<html>
+  <head>
+    <title>htmlize-file.el</title>
+    <style type="text/css">
+    <!--
+      body {
+        color: #000000;
+        background-color: #ffffff;
+        font-weight: bold;
+      }
+      .comment {
+        /* font-lock-comment-face */
+        color: #a52a2a;
+      }
+      .constant {
+        /* font-lock-constant-face */
+        color: #ffa500;
+      }
+      .keyword {
+        /* font-lock-keyword-face */
+        color: #0000cd;
+      }
+      .string {
+        /* font-lock-string-face */
+        color: #228b22;
+      }
+      a {
+        color: inherit;
+        background-color: inherit;
+        font: inherit;
+        text-decoration: inherit;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+<span class="comment">;;; htmlize-file.el --- file used by htmlize-file.sh
+</span>
+<span class="comment">;;; Commentary:
+;; Author: Joerg Arndt
+;; online at http://www.jjj.de
+;; based on http://www.dd.chalmers.se/~bojohan/emacs/lisp/my-htmlize.el
+</span>
+<span class="comment">;;; History:
+;; version: 2005-February-19 (11:27)
+</span>
+
+<span class="comment">;;; Code:
+</span>
+<span class="comment">;;(iconify-frame)
+;;(setq frame-title-format '("8-)"))
+</span>
+<span class="comment">;;(load-file "~/.emacs")
+</span>(<span class="keyword">require</span> '<span class="constant">htmlize</span>)
+
+(<span class="keyword">unless</span> (find-file-read-only (getenv <span class="string">"FILE"</span>)) (kill-emacs))  
+
+<span class="comment">;;(find-file (pop command-line-args-left))
+</span>(font-lock-fontify-buffer)
+<span class="comment">;;(with-current-buffer (htmlize-buffer) (princ (buffer-string)))
+</span>(<span class="keyword">with-current-buffer</span> (htmlize-buffer) (write-file <span class="string">"tmp-htmlize-out-tmp.html"</span>))
+<span class="comment">;;(htmlize-file (getenv "FILE"))
+</span>
+(kill-emacs)
+
+<span class="comment">;;; htmlize-file.el ends here
+</span></pre>
+  </body>
+</html>

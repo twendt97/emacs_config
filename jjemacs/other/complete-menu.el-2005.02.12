@@ -1,0 +1,159 @@
+;;;  .complete-menu.el v1.0
+
+;;; Author:
+;;;   Alon Albert <alon@milcse.rtsg.ai.edu> to pop a dialog box
+
+;;; This program is free software; you can redistribute it and/or modify
+;;; it under the terms of the GNU General Public License as published by
+;;; the Free Software Foundation; either version 2, or (at your option)
+;;; any later version.
+;;;
+;;; This program is distributed in the hope that it will be useful,
+;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;;; GNU General Public License for more details.
+;;;
+
+;;; Commentary:
+
+;;; Completetion help (type '?' at minibuffer) in a menu.
+;;; Also supports unix like wildcards so:
+;;; find file: comp*.el* <?>
+;;; pops a menu with complete-menu.el and complete-menu.elc in it.
+;;; I find it very usefull for describe-function and describe-variable.
+;;; typing C-h v *word* pops a menu with all variables with the word "word"
+;;; in them. (something like apropos)
+
+;;; History:
+
+;;; v1.0 July 7 1993: <Alon Albert>
+;;;    - First release.
+
+;;; Instalation:
+;;;   put this file in your load-path and insert the following in .emacs
+;;;
+;;;     (require 'complete-menu)
+
+
+;; Einf"ugung: Werner Fink
+(defun cm-mouse-position ()
+   (interactive)
+   (if (boundp 'mouse-init-event)
+      (mouse-position)
+    (set-mouse-position last-event-frame
+                        (/ (frame-width) 2) 2)
+    (unfocus-frame)
+    (cons last-event-frame (cons (/ (frame-width) 2) '(.  2)))))
+
+(fset 'cm-mouse-set-point (symbol-function 'mouse-set-point))
+
+(defun mouse-set-point (click)
+  (interactive "e")
+  (cm-mouse-set-point click)
+  (if (boundp 'mouse-init-event) nil (setq mouse-init-event t)))
+;; Ende 
+
+
+(defvar cm-max-entries-in-menu 45
+"Maximum lines to display in a single menu pane")
+
+(defvar cm-store-cut-buffer t
+"If not nill then store selection in mouse cut buffer")
+
+(defvar cm-execute-on-completion t
+"If not nil then exucute command after completion")
+
+(defvar cm-wildcard-to-regexp
+   '((?* . ".*")
+    (?. . "\\.")
+    (?? . "."))
+  "Translation table from wildcard format to regexp format")
+
+(defun cm-make-regexp (wildcard)
+  "Make a regexp out of unix like wildcard"
+  (let* ((char-list (append wildcard)))
+    (mapconcat (function
+                (lambda (elt)
+                  (let ((regexp (cdr (assoc elt cm-wildcard-to-regexp))))
+                    (if regexp
+                      regexp
+                    (char-to-string elt)))))
+               char-list "")))
+                                
+(defun old-zap-to-char (arg char)
+  "Kill up to (but not including) ARG'th occurrence of CHAR.
+Goes backward if ARG is negative; goes to end of buffer if CHAR not found."
+  (interactive "*p\ncZap to char: ")
+  (kill-region (point) (if (search-forward (char-to-string char) nil t arg)
+                         (progn (goto-char
+                                 (if (> arg 0) (1- (point)) (1+ (point))))
+                                (point))
+                         (if (> arg 0) (point-max) (point-min)))))
+
+(defun cm-minibuffer-completion-help ()
+  "List completions in a menu and copy selction into minibuffer"
+  (interactive)
+  (message "Making completion list...")
+  (let* ((complete (buffer-string))
+         (mouse-pos (cm-mouse-position))
+         (mouse-pos (if (nth 1 mouse-pos)
+                        mouse-pos
+                      (set-mouse-position (car mouse-pos)
+                                          (/ (frame-width) 2) 2)
+                      (unfocus-frame)
+                      (cm-mouse-position)))
+         (pos (list (list (car (cdr mouse-pos))
+                          (1+ (cdr (cdr mouse-pos))))
+                    (car mouse-pos)))
+         (match nil)
+         (panes nil)
+         (pane nil)
+         (i 0)
+         completion-list
+         menu)
+    (if (string-match "\\*\\|\\?" complete)
+        (setq match (format "^%s$" (cm-make-regexp
+                                    (file-name-nondirectory complete)))
+              complete (substring complete 0 (match-beginning 0))))
+    (setq completion-list (sort (all-completions
+                                 complete
+                                 minibuffer-completion-table
+                                 minibuffer-completion-predicate)
+                                'string<))
+    (mapcar (function
+             (lambda (elt)
+               (if (or (null match)
+                       (string-match match elt))
+                   (setq pane (append pane (list (cons elt elt)))
+                         i (1+ i)))
+               (if (= i cm-max-entries-in-menu)
+                   (setq panes (cons (cons (concat "Top: " (car (car pane)))
+                                           pane) panes)
+                         pane nil
+                         i 0))))
+            completion-list)  
+    (if pane (setq panes (cons (cons (concat "Top: " (car (car pane)))
+                                     pane) panes)))
+    (message "Making completion list... Done")
+    (setq menu (append (list "Completions") panes))
+    (if (not (car (cdr menu)))
+        (beep)
+      (setq name (x-popup-menu pos menu))
+      (old-zap-to-char -1 ?/)
+      (if name
+          (progn
+            (insert name)
+            (if cm-store-cut-buffer (kill-new name))
+            (if cm-execute-on-completion (exit-minibuffer)))))))
+
+(if (string= window-system "x")
+    (progn
+      (substitute-key-definition 'minibuffer-completion-help
+                               'cm-minibuffer-completion-help
+                               minibuffer-local-completion-map)
+      (substitute-key-definition 'minibuffer-completion-help
+                               'cm-minibuffer-completion-help
+                               minibuffer-local-must-match-map)))
+
+(provide 'complete-menu)
+
