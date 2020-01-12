@@ -8,6 +8,9 @@
 
 (load "~/.emacs.d/jjemacs/main.el")
 
+;; enable window splitting with hydra. See https://github.com/abo-abo/hydra/wiki/Window-Management
+(load "~/.emacs.d/custom_packages/window_management.el")
+
 ;enable yaml-mode
 ;(load "~/.emacs.d/yaml-mode/yaml-mode.el")
 ;(require 'yaml-mode)
@@ -24,8 +27,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-check-signature nil)
- '(package-selected-packages (quote (auctex))))
+ '(package-check-signature t)
+ '(package-selected-packages (quote (ace-window auctex))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -35,6 +38,8 @@
  '(superscript ((default) (nil nil)))
  '(tex-verbatim ((default) (nil nil))))
 
+;; Set dictionary to german
+ (setq ispell-dictionary "german")
+
 ;; deactivate backup files
 (setq make-backup-files nil)
-
