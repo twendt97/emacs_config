@@ -3,7 +3,7 @@
 ;;; Code:
 (add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "irony" "irony.el" (24099 20561 548241 33000))
+;;;### (autoloads nil "irony" "irony.el" (24099 23136 929006 631000))
 ;;; Generated autoloads from irony.el
 
 (defvar irony-additional-clang-options nil "\
@@ -42,8 +42,8 @@ Get the type of symbol under cursor.
 
 ;;;***
 
-;;;### (autoloads nil "irony-cdb" "irony-cdb.el" (24099 20561 652247
-;;;;;;  400000))
+;;;### (autoloads nil "irony-cdb" "irony-cdb.el" (24099 23137 33003
+;;;;;;  479000))
 ;;; Generated autoloads from irony-cdb.el
 
 (autoload 'irony-cdb-autosetup-compile-options "irony-cdb" "\
@@ -59,7 +59,7 @@ Get the type of symbol under cursor.
 ;;;***
 
 ;;;### (autoloads nil "irony-cdb-clang-complete" "irony-cdb-clang-complete.el"
-;;;;;;  (24099 20561 552241 278000))
+;;;;;;  (24099 23136 933006 509000))
 ;;; Generated autoloads from irony-cdb-clang-complete.el
 
 (autoload 'irony-cdb-clang-complete "irony-cdb-clang-complete" "\
@@ -70,7 +70,7 @@ Get the type of symbol under cursor.
 ;;;***
 
 ;;;### (autoloads nil "irony-cdb-json" "irony-cdb-json.el" (24099
-;;;;;;  20561 560241 767000))
+;;;;;;  23136 941006 267000))
 ;;; Generated autoloads from irony-cdb-json.el
 
 (autoload 'irony-cdb-json "irony-cdb-json" "\
@@ -111,7 +111,7 @@ Select CDB that is most recently modified.
 ;;;***
 
 ;;;### (autoloads nil "irony-cdb-libclang" "irony-cdb-libclang.el"
-;;;;;;  (24099 20561 652247 400000))
+;;;;;;  (24099 23137 29003 599000))
 ;;; Generated autoloads from irony-cdb-libclang.el
 
 (autoload 'irony-cdb-libclang "irony-cdb-libclang" "\
@@ -122,7 +122,7 @@ Select CDB that is most recently modified.
 ;;;***
 
 ;;;### (autoloads nil "irony-completion" "irony-completion.el" (24099
-;;;;;;  20561 556241 523000))
+;;;;;;  23136 937006 389000))
 ;;; Generated autoloads from irony-completion.el
 
 (autoload 'irony-completion-at-point "irony-completion" "\
@@ -133,7 +133,7 @@ Select CDB that is most recently modified.
 ;;;***
 
 ;;;### (autoloads nil nil ("irony-diagnostics.el" "irony-iotask.el"
-;;;;;;  "irony-pkg.el" "irony-snippet.el") (24099 20561 556241 523000))
+;;;;;;  "irony-pkg.el" "irony-snippet.el") (24099 23136 941006 267000))
 
 ;;;***
 

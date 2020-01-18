@@ -1,0 +1,69 @@
+language: cpp
+
+sudo: required
+dist: trusty
+
+addons:
+  apt:
+    sources:
+      - llvm-toolchain-trusty-4.0
+      - sourceline: 'ppa:ubuntu-elisp/ppa'
+    packages:
+      - libclang-dev
+      - emacs
+      - emacs-snapshot
+      - clang-tidy-4.0
+
+compiler:
+  - gcc
+  - clang
+
+env:
+  - EMACS=emacs
+  - EMACS=emacs-snapshot
+
+matrix:
+  include:
+    - addons:
+        apt:
+          sources:
+            - llvm-toolchain-trusty-4.0
+          packages:
+            - emacs
+            - clang-4.0
+            - libclang-4.0-dev
+            - clang-format-4.0
+            - clang-tidy-4.0
+            - realpath
+      script:
+        - mkdir build
+        - cd build
+        - |
+          cmake -DCMAKE_C_COMPILER=clang-4.0 -DCMAKE_CXX_COMPILER=clang++-4.0 \
+          -DCMAKE_CXX_FLAGS="-Wall -Wextra -Werror" \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+          ../server
+        - make -k
+        - make check
+        - |
+          ../server/build-aux/run-clang-tidy/run-clang-tidy.py \
+          -clang-tidy-binary clang-tidy-4.0 \
+          -clang-apply-replacements-binary clang-apply-replacements-4.0 \
+          -p . \
+          -header-filter $(realpath ../server) \
+          -warnings-as-errors='*'
+
+script:
+  - mkdir build
+  - cd build
+  - $EMACS --version
+  - |
+    cmake \
+    -DEMACS_EXECUTABLE=$(which $EMACS) \
+    -DCMAKE_CXX_FLAGS="-Wall -Wextra -Werror" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+    ../server
+  - make -k
+  - make check
