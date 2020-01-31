@@ -9,13 +9,13 @@
 ;(load "~/.emacs.d/custom_packages/window_management.el")
 
 ;enable yaml-mode
-;(load "~/.emacs.d/yaml-mode/yaml-mode.el")
-;(require 'yaml-mode)
-;(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+(load "~/.emacs.d/yaml-mode/yaml-mode.el")
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 ;(load "./sql-upcase.el")
-(when (require 'sql-upcase nil :noerror)
-  (add-hook 'sql-mode-hook 'sql-upcase-mode)
-  (add-hook 'sql-interactive-mode-hook 'sql-upcase-mode))
+;(when (require 'sql-upcase nil :noerror)
+;  (add-hook 'sql-mode-hook 'sql-upcase-mode)
+;  (add-hook 'sql-interactive-mode-hook 'sql-upcase-mode))
 
 
 ;; end
@@ -68,7 +68,7 @@ There are two things you can do about this warning:
              :ensure t
              :config
              (setq company-idle-delay 0)
-             (setq company-minimum-prefix-length 3))
+             (setq company-minimum-prefix-length 2))
 
 
 (use-package company-irony
