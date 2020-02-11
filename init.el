@@ -12,6 +12,7 @@
 (load "~/.emacs.d/yaml-mode/yaml-mode.el")
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+
 ;(load "./sql-upcase.el")
 ;(when (require 'sql-upcase nil :noerror)
 ;  (add-hook 'sql-mode-hook 'sql-upcase-mode)
@@ -28,7 +29,7 @@
  '(package-check-signature (quote allow-unsigned))
  '(package-selected-packages
    (quote
-    (irony-eldoc company-irony company ace-window auctex))))
+    (company-quickhelp company-shell cl-lib-highlight dash dockerfile-mode irony-eldoc company-irony company ace-window auctex))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -70,12 +71,18 @@ There are two things you can do about this warning:
              (setq company-idle-delay 0)
              (setq company-minimum-prefix-length 2))
 
+(use-package company-shell
+  :ensure t
+  :config
+  (require 'company)
+;  (setq company-shell-delete-dublicates t)
+  )
 
 (use-package company-irony
-             :ensure t
-             :config
-             (require 'company)
-             (add-to-list 'company-backends 'company-irony))
+  :ensure t
+  :config
+  (require 'company)
+  (add-to-list 'company-backends 'company-irony))
 
 (use-package irony
              :ensure t
@@ -86,9 +93,18 @@ There are two things you can do about this warning:
 
 (with-eval-after-load 'company
   (add-hook 'c++-mode-hook 'company-mode)
-  (add-hook 'c-mode-hook 'company-mode))
+  (add-hook 'c-mode-hook 'company-mode)
+  (add-hook 'sh-mode-hook 'company-mode)
+  (add-hook 'sh-mode-hook 'company-quickhelp-mode)
+  (add-hook 'emacs-lisp-mode-hook 'company-mode)
+  (add-hook 'emacs-lisp-mode-hook 'company-quickhelp-mode))
 
 (eval-after-load 'company
-  '(add-to-list 'company-backends 'company-irony))
+  '(define-key company-active-map (kbd "C-c h") #'company-quickhelp-manual-begin))
 
-;(add-hook 'after-init-hook 'global-company-mode)
+(with-eval-after-load 'company
+  (add-to-list 'company-backends 'company-irony)
+  (add-to-list 'company-backends 'company-shell))
+
+                                        ;(add-hook 'after-init-hook 'global-company-mode)
+
