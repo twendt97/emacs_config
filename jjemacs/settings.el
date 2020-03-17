@@ -226,7 +226,7 @@
 ;;(setq TeX-parse-self t)
 (setq-default TeX-master nil)
 ;;(setq ispell-change-dictionary 'american)
-(setq ispell-dictionary "american")
+;;(setq ispell-dictionary "american")
 (setq ispell-check-comments nil)
 
 (setq jj-tex-skip

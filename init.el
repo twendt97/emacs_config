@@ -81,16 +81,8 @@
              (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options))
 
 ;;; ...for auctex
-(use-package company-auctex
-  :ensure t
-  :config
-  (require 'company)
-  (add-to-list 'company-backends 'company-auctex)
-  (company-auctex-init))
-
-;;(require 'company-auctex)
-;;(company-auctex-init)
-;;(add-to-list 'company-backends 'company-auctex)
+(require 'company-auctex)
+(company-auctex-init)
 
 ;;; activate company if one of the following modes are enabled
 (with-eval-after-load 'company
@@ -112,6 +104,13 @@
 ;; deactivate startup screen
 (setq inhibit-startup-screen t)
 
+;; set desired language
+(setq ispell-dictionary "american")
+                                        ;(setq ispell-dictionary "german")
+
+;; increase font size
+(set-face-attribute 'default (selected-frame) :height 220)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -128,3 +127,5 @@
  '(subscript ((default) (nil nil)))
  '(superscript ((default) (nil nil)))
  '(tex-verbatim ((default) (nil nil))))
+
+

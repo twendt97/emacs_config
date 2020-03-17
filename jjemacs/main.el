@@ -99,7 +99,7 @@
 (load "fonts.el")
 (load "menu.el")
 (load "mode-line.el")
-(load "xwin.el")
+;;(load "xwin.el")
 (load "my-font-lock.el")
 ;;;(load "dim-colors.el") ; loaded by my-font-lock.el
 (load "settings.el")
