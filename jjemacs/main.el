@@ -34,6 +34,7 @@
 (load "linum.el")
 ;; activate with  M-x linum-mode
 ;; or  M-x global-linum-mode
+;;(global-linum-mode)
 
 ;; highlight the current line:
 (load "highline.el")
@@ -54,9 +55,9 @@
 ;;(autoload 'gp "pari" "pari gp" t)
 ;;(autoload 'gpman "pari" " pari-gp manual" t)
 
-(autoload 'gap-mode "gap-mode" "Gap editing mode" t)
+;(autoload 'gap-mode "gap-mode" "Gap editing mode" t)
 
-(setq load-path (append load-path '("~/.jjemacs/other/maxima/")))
+(setq load-path (append load-path '("~/.emacs.d/jjemacs/other/maxima/")))
 (autoload 'maxima-mode "maxima/maxima.el" "Maxima mode" t)
 
 ;;(autoload 'mupad-mode "mupad-mode" "mupad Mode" t)
@@ -77,7 +78,7 @@
 (autoload 'htmlize-file "htmlize" "htmlize" t)
 (autoload 'htmlize-region "htmlize" "htmlize" t)
 
-;;(autoload 'python-mode "python-mode" "python Mode" t)
+(autoload 'python-mode "python-mode" "python Mode" t)
 
 (autoload 'c++-mode  "cc-mode" "C++ Editing Mode" t)
 (autoload 'c-mode    "cc-mode" "C Editing Mode" t)
@@ -100,10 +101,10 @@
 (load "mode-line.el")
 (load "xwin.el")
 (load "my-font-lock.el")
-;;(load "dim-colors.el") ; loaded by my-font-lock.el
+;;;(load "dim-colors.el") ; loaded by my-font-lock.el
 (load "settings.el")
-(load "jjproject.el")
-(load "playground.el")
+;;(load "jjproject.el")
+;;(load "playground.el")
 
 ;; If you copy my config, but want to override
 ;; some things, keep a file ~/.emacs-final.el
