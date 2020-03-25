@@ -33,6 +33,19 @@
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 (setq colon-double-space t)
 
+;;; Latex Mode setup
+(add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
+
+;;; make auctex parse the master file and all style files
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(setq-default TeX-master nil)
+;;(setq-default TeX-auto-regexp-list 'TeX-auto-full-regexp-list)
+(require 'reftex)
+(with-eval-after-load 'reftex
+  (add-hook 'LaTeX-mode-hook 'turn-on-reftex))
+
+
 ;;; Prevent Extraneous Tabs
 (setq-default indent-tabs-mode nil)
 
@@ -116,6 +129,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(electric-pair-mode t)
+ '(ispell-personal-dictionary "~/.emacs.d/aspell_personal/.aspell.en.pws")
  '(package-selected-packages
    (quote
     (company-auctex use-package irony-eldoc hydra go-mode gnu-elpa-keyring-update dockerfile-mode company-shell company-quickhelp company-irony cl-lib-highlight auctex ace-window))))
