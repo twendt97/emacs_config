@@ -1,0 +1,3 @@
+[submodule "python-django.el"]
+	path = python-django.el
+	url = https://github.com/fgallina/python-django.el.git

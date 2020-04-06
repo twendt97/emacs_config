@@ -25,6 +25,35 @@
    '("melpa" . "http://melpa.milkbox.net/packages/")
    t))
 
+;; auto install uninstalled packages
+(defvar local-packages
+  '(auctex company company-auctex company-irony company-shell dockerfile-mode irony python-mode
+           projectile company-jedi))
+
+;; check which packages are installed
+(defun uninstalled-packages (packages)
+  (delq nil
+        (mapcar (lambda (p)
+                  (if (package-installed-p p nil) nil p))
+                packages)))
+;; install packages that are not installed yet
+(let ((need-to-install
+       (uninstalled-packages local-packages)))
+  (when need-to-install
+    (progn
+      (package-refresh-contents)
+      (dolist (p need-to-install)
+        (package-install p)))))
+
+;; setup projectile
+(setq projectile-project-search-path '("~/Documents/" "~/docker/"))
+(global-set-key "\C-cpf" 'projectile-find-file)
+(global-set-key "\C-cpp" 'projectile-switch-project)
+(global-set-key "\C-cpk" 'projectile-kill-buffers)
+(require 'projectile)
+(projectile-global-mode)
+
+
 ;;; Text mode and Auto Fill mode
 ;; The next two lines put Emacs into Text mode
 ;; and Auto Fill mode, and are for writers who
@@ -45,6 +74,9 @@
 (with-eval-after-load 'reftex
   (add-hook 'LaTeX-mode-hook 'turn-on-reftex))
 
+;; highlight matching parentheses
+(setq show-paren-delay 0)
+(show-paren-mode 1)
 
 ;;; Prevent Extraneous Tabs
 (setq-default indent-tabs-mode nil)
@@ -97,6 +129,14 @@
 (require 'company-auctex)
 (company-auctex-init)
 
+;;; ... for python
+(use-package company-jedi
+  :ensure t
+  :config
+  (require 'company)
+  (add-to-list 'company-backends 'company-jedi))
+
+
 ;;; activate company if one of the following modes are enabled
 (with-eval-after-load 'company
   (add-hook 'c++-mode-hook 'company-mode)
@@ -105,7 +145,8 @@
   (add-hook 'sh-mode-hook 'company-quickhelp-mode)
   (add-hook 'emacs-lisp-mode-hook 'company-mode)
   (add-hook 'emacs-lisp-mode-hook 'company-quickhelp-mode)
-  (add-hook 'LaTeX-mode-hook 'company-mode))
+  (add-hook 'LaTeX-mode-hook 'company-mode)
+  (add-hook 'python-mode-hook 'company-mode))
 
 (eval-after-load 'company
   '(define-key company-active-map (kbd "C-c h") #'company-quickhelp-manual-begin))
@@ -117,9 +158,12 @@
 ;; deactivate startup screen
 (setq inhibit-startup-screen t)
 
+;; key bindings django-python mode
+(global-set-key "\C-cpj" 'python-django-open-project)
+
 ;; set desired language
 (setq ispell-dictionary "american")
-                                        ;(setq ispell-dictionary "german")
+;;(setq ispell-dictionary "german")
 
 ;; increase font size
 (set-face-attribute 'default (selected-frame) :height 220)
@@ -133,7 +177,7 @@
  '(ispell-personal-dictionary "~/.emacs.d/aspell_personal/.aspell.en.pws")
  '(package-selected-packages
    (quote
-    (company-auctex use-package irony-eldoc hydra go-mode gnu-elpa-keyring-update dockerfile-mode company-shell company-quickhelp company-irony cl-lib-highlight auctex ace-window))))
+    (web-mode markdown-mode django-mode python-django company-jedi projectile python-mode python company-auctex use-package irony-eldoc hydra go-mode gnu-elpa-keyring-update dockerfile-mode company-shell company-quickhelp company-irony cl-lib-highlight auctex ace-window))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
