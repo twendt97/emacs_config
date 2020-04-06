@@ -74,6 +74,29 @@
 (with-eval-after-load 'reftex
   (add-hook 'LaTeX-mode-hook 'turn-on-reftex))
 
+;; setup web-mode
+(defun my-web-mode-hook ()
+  "Hooks for web mode"
+  (setq electric-pair-mode nil)
+  (setq web-mode-enable-auto-closing t)
+  (setq web-mode-enable-auto-expanding t)
+  (setq web-mode-enable-auto-quoting t)
+  (setq web-mode-enable-auto-opening t)
+  (load "~/.emacs.d/django-ext/django-ext.el")
+  )
+
+(use-package web-mode
+  :ensure t
+  :config
+  (setq web-mode-engines-alist
+        '(("django"    . "\\.html\\'"))
+        )
+  (setq web-mode-enable-current-element-highlight t)
+)
+
+(with-eval-after-load 'web-mode
+  (add-hook 'web-mode-hook 'my-web-mode-hook))
+
 ;; highlight matching parentheses
 (setq show-paren-delay 0)
 (show-paren-mode 1)
@@ -136,6 +159,8 @@
   (require 'company)
   (add-to-list 'company-backends 'company-jedi))
 
+;; ... for web-mode
+(require 'company-web-html)
 
 ;;; activate company if one of the following modes are enabled
 (with-eval-after-load 'company
@@ -146,7 +171,8 @@
   (add-hook 'emacs-lisp-mode-hook 'company-mode)
   (add-hook 'emacs-lisp-mode-hook 'company-quickhelp-mode)
   (add-hook 'LaTeX-mode-hook 'company-mode)
-  (add-hook 'python-mode-hook 'company-mode))
+  (add-hook 'python-mode-hook 'company-mode)
+  (add-hook 'web-mode-hook 'company-mode))
 
 (eval-after-load 'company
   '(define-key company-active-map (kbd "C-c h") #'company-quickhelp-manual-begin))

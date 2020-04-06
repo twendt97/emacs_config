@@ -79,6 +79,8 @@
 ;;         ("\\.php3$"  . html-helper-mode)
          ("\\.html$"  . web-mode)
          ("\\.htm$"   . web-mode)
+         ("\\.js$"   . web-mode)
+         ("\\.css$"   . web-mode)
          ("\\.phtml$" . html-mode)
          ("\\.php3$"  . html-mode)
 
