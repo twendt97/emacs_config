@@ -27,11 +27,15 @@
 
 (defvar django-html-mode-map
   (let ((django-html-mode-map (make-keymap)))
-    (define-key web-mode-map "\C-c\C-dj" 'newline-and-indent)
-    (define-key web-mode-map "\C-c\C-d]" 'django-html-close-tag)
-    (define-key web-mode-map "\C-c\C-di" 'django-html-insert-tag)
+    ;; (define-key web-mode-map "\C-c\C-dj" 'newline-and-indent)
+    ;; (define-key web-mode-map "\C-c\C-d]" 'django-html-close-tag)
+    ;; (define-key web-mode-map "\C-ci" 'django-html-insert-tag)
     django-html-mode-map)
   "Keymap for Django html extensions mode.")
+
+(define-key web-mode-map "\C-c\C-dj" 'newline-and-indent)
+(define-key web-mode-map "\C-c\C-d]" 'django-html-close-tag)
+(define-key web-mode-map "\C-ci" 'django-html-insert-tag)
 
 ;; if : if, if not, if A or B, if not A or B, if not A and B
 ;; for : for a in alist reversed

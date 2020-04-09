@@ -124,7 +124,9 @@
              :ensure t
              :config
              (setq company-idle-delay 0)
-             (setq company-minimum-prefix-length 2))
+             (setq company-minimum-prefix-length 2)
+             (define-key company-mode-map "\C-cc" 'company-complete)
+             (setq company-async-timeout 10))
 
 ;;; ...for shell
 (use-package company-shell
